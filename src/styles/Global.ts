@@ -14,15 +14,12 @@ html{
 }
 
 body{
-  display:flex;
-  align-items:center ;
-  justify-content:center ;
   min-height:100vh;
   box-sizing:border-box ;
   line-height:1.6 ;
   font-size:${({ theme }) => theme.sizes.defaultFont} ;
-  font-family:${({ theme }) => theme.fonts.primaryEnFont} ;
-  color:${({ theme }) => theme.colors.grayDark1};
+  font-family:${({ theme }) => theme.fonts.primaryHanFont} ;
+  color:${({ theme }) => theme.colors.grayDark2};
 }
 
 input{
