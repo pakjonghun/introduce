@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { theme } from "../styles/theme";
+import { theme } from "../../styles/theme";
 
 interface BorderProps {
   height: string;
@@ -17,12 +17,7 @@ const Border: React.FC<BorderProps> = ({
   ...props
 }) => {
   return (
-    <Container
-      distance={distance}
-      width={width}
-      color={color}
-      {...props}
-    ></Container>
+    <Container distance={distance} width={width} color={color} {...props} />
   );
 };
 

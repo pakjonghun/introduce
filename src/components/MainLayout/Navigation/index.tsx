@@ -1,20 +1,13 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { useRecoilValue } from "recoil";
 import styled, { css } from "styled-components";
-import useDelaySetState from "../../../hooks/useDelaySetState";
-import { scrollDirectionState } from "../../../recoil/Introduce/atom";
 import { baseGradient, baseMenuHover } from "../../../styles/typography";
 import { INTRODUCE_TEXT, TIL_ENTER_TEXT } from "../../../texture/constants";
+import useGetIsShowNav from "./useGetIsShowNav";
 
 const Navigation = () => {
   const { pathname } = useLocation();
-  const scrollDirection = useRecoilValue(scrollDirectionState);
-  const isShowNav = useDelaySetState({
-    delay: 500,
-    state: scrollDirection === null,
-    isNotDelay: scrollDirection !== null,
-  });
+  const isShowNav = useGetIsShowNav();
 
   return (
     <Container isShowNav={isShowNav}>

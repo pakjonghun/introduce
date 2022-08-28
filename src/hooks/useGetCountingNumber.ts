@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { easeOutExpo } from "./utils";
 
-export interface UseRiseCountProps {
+export interface UseGetCountingNumberProps {
   endNumber: number;
   duration: number;
   isAniStart: boolean;
@@ -14,7 +15,7 @@ const useGetCountingNumber = ({
   delay = 0,
   startNumber = 0,
   isAniStart,
-}: UseRiseCountProps) => {
+}: UseGetCountingNumberProps) => {
   const frame = 60;
   const totalFrameCount = Math.floor((frame / 1000) * duration);
   const [number, setNumber] = useState(startNumber);
@@ -43,14 +44,3 @@ const useGetCountingNumber = ({
 };
 
 export default useGetCountingNumber;
-
-interface EastOutExpoProps {
-  t: number;
-  b: number;
-  c: number;
-  d: number;
-}
-
-function easeOutExpo({ t, b, c, d }: EastOutExpoProps) {
-  return t === d ? b + c : c * (-Math.pow(2, (-10 * t) / d) + 1) + b;
-}

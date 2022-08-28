@@ -15,8 +15,6 @@ html{
   
 }
 
-
-
 body{
   min-height:100vh;
   box-sizing:border-box ;
@@ -24,8 +22,11 @@ body{
   font-size:${({ theme }) => theme.sizes.defaultFont} ;
   font-family:${({ theme }) => theme.fonts.primaryHanFont} ;
   color:${({ theme }) => theme.colors.grayDark2};
-
-
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 input{

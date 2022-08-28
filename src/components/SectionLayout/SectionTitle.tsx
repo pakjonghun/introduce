@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { blinking } from "../styles/animation";
+import { blinking } from "../../styles/animation";
 
 interface SectionTitleProps {
   title: string;

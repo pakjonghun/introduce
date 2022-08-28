@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import useGetCountingNumber from "../../../../hooks/useGetCountingNumber";
 import { scaleUp } from "../../../../styles/animation";
 import { easeOutQuad } from "../../../../utils/styleFunctions";
-import useGetIsCurPage from "../../useGetIsCurPage";
+import useGetIsCurPage from "../../hooks/useGetIsCurPage";
 
 interface ExperienceCountProps {
   endNumber: number;

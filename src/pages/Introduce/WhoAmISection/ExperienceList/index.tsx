@@ -25,7 +25,6 @@ const Container = styled.div`
   grid-gap: 5rem;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: min-content min-content repeat(6, min-content);
-  grid-row: 3/4;
 `;
 
 const Text = styled.span`

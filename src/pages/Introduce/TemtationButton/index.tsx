@@ -1,26 +1,14 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import useDelay from "../../../hooks/useDelaySetState";
-import useGetPageSwitchFunc from "../../../hooks/useGetPageSwitchFunc";
-import { scrollDirectionState } from "../../../recoil/Introduce/atom";
+import useGetPageSwitchFunc from "../hooks/useGetPageSwitchFunc";
 import { temptation } from "../../../styles/animation";
 import { getSvgIcon } from "../../../styles/typography";
+import useGetIsShowButton from "./useGetIsShowButton";
 
 const TemtationButton = () => {
-  const docEle = document.documentElement;
-  const { scrollHeight, scrollTop, clientHeight } = docEle;
-  const isBottom = scrollHeight === scrollTop + clientHeight;
   const onClick = useGetPageSwitchFunc();
-
-  const scrollDirection = useRecoilValue(scrollDirectionState);
-  const isButtonShow = useDelay({
-    delay: 1000,
-    state: scrollDirection === null,
-    isNotDelay: scrollDirection !== null,
-  });
-
-  return <DownArrow onClick={onClick} isShow={!isBottom && isButtonShow} />;
+  const isButtonShow = useGetIsShowButton();
+  return <DownArrow onClick={onClick} isShow={isButtonShow} />;
 };
 
 export default TemtationButton;

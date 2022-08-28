@@ -36,7 +36,6 @@ export default ExperienceDesc;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  grid-row: 3/4;
   margin-top: 4rem;
   color: ${({ theme }) => theme.colors.grayDark3};
 `;

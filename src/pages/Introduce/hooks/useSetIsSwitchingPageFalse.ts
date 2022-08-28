@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { isSwitchingPageState } from "../recoil/Introduce/atom";
+import { isSwitchingPageState } from "../../../recoil/Introduce/atom";
 const useSetIsSwitchingPageFalse = (delay = 700) => {
   const [isSwitchingPage, setIsSwitchingPage] =
     useRecoilState(isSwitchingPageState);
@@ -8,7 +8,7 @@ const useSetIsSwitchingPageFalse = (delay = 700) => {
   useEffect(() => {
     let timer: NodeJS.Timeout | null = null;
 
-    if (isSwitchingPage === true) {
+    if (isSwitchingPage) {
       if (timer) clearTimeout(timer);
       timer = setTimeout(() => {
         setIsSwitchingPage(false);

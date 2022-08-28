@@ -1,34 +1,34 @@
+import { isSwitchingPageState } from "./../../../recoil/Introduce/atom";
 import { useEffect } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { scrollDirectionState, scrollTopState } from "../recoil/Introduce/atom";
+import {
+  scrollDirectionState,
+  scrollTopState,
+} from "../../../recoil/Introduce/atom";
+import useSetScrollDirectionNone from "./useSetScrollDirectionNone";
 
-function useSetScrollTop() {
+function useSetScrollTopAndDirection() {
   const [scrollTop, setScrollTop] = useRecoilState(scrollTopState);
   const setScrollDirection = useSetRecoilState(scrollDirectionState);
+  const setIsPageSwitching = useSetRecoilState(isSwitchingPageState);
+  useSetScrollDirectionNone();
 
   useEffect(() => {
-    let timer: NodeJS.Timeout | null = null;
-
     function setScrollInfo() {
+      setIsPageSwitching(true);
       setScrollTop(document.documentElement.scrollTop);
       setScrollDirection(
         scrollTop < document.documentElement.scrollTop ? "down" : "up"
       );
     }
 
-    if (timer) clearTimeout(timer);
-    timer = setTimeout(() => {
-      setScrollDirection(null);
-    }, 300);
-
     window.removeEventListener("scroll", setScrollInfo);
     window.addEventListener("scroll", setScrollInfo);
 
     return () => {
       window.removeEventListener("scroll", setScrollInfo);
-      if (timer) clearTimeout(timer);
     };
-  }, [setScrollTop, setScrollDirection, scrollTop]);
+  }, [setScrollTop, setScrollDirection, setIsPageSwitching, scrollTop]);
 }
 
-export default useSetScrollTop;
+export default useSetScrollTopAndDirection;

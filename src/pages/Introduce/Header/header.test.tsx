@@ -1,14 +1,14 @@
 import React from "react";
 import { render, renderHook, screen, waitFor } from "@testing-library/react";
-import EnterButtons from "./EnterButtons";
 import { INTRODUCE_TEXT, TIL_ENTER_TEXT } from "../../../texture/constants";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../../../styles/theme";
 import "jest-styled-components";
 import useGetCountingNumber, {
-  UseRiseCountProps,
+  UseGetCountingNumberProps,
 } from "../../../hooks/useGetCountingNumber";
 import { act } from "react-dom/test-utils";
+import EnterButtons from "./EnterButton";
 
 test("헤더에 배경이 투명인 버튼은 2개다. 가 페이드인 된다", () => {
   render(
@@ -34,7 +34,7 @@ test("개발 일수는 타이머 종료 후 endNumber 가 출력되어야 한다
   const isAniStart = true;
 
   const { result } = renderHook(
-    (initProps: UseRiseCountProps) => useGetCountingNumber(initProps),
+    (initProps: UseGetCountingNumberProps) => useGetCountingNumber(initProps),
     { initialProps: { endNumber, duration, isAniStart } }
   );
 

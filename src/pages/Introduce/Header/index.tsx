@@ -1,21 +1,21 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import styled from "styled-components";
 import { leftFadeIn } from "../../../styles/animation";
-import EnterButtons from "./EnterButtons";
+import EnterButtons from "./EnterButton";
 import HeaderProfile from "./HeaderProfile";
-import Headings from "./Headings";
+import HeaderHeading from "./HeaderHeading";
 
-const Header = forwardRef<HTMLElement>((_, ref) => {
+const Header = () => {
   return (
-    <Container ref={ref}>
+    <Container>
       <Banner>
-        <Headings />
+        <HeaderHeading />
         <EnterButtons />
       </Banner>
       <HeaderProfile />
     </Container>
   );
-});
+};
 
 export default Header;
 

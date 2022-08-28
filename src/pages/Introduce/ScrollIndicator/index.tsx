@@ -7,7 +7,7 @@ import {
 } from "../../../recoil/Introduce/atom";
 import { leftFadeIn } from "../../../styles/animation";
 import { baseMenuHover } from "../../../styles/typography";
-import { PAGE_ONE_TITLE } from "../../../texture/constants";
+import { PAGE_ONE_TITLE, PAGE_TWO_TITLE } from "../../../texture/constants";
 
 const ScrollIndicator = () => {
   const wrapperRef = useRef<HTMLUListElement | null>(null);
@@ -42,6 +42,9 @@ const ScrollIndicator = () => {
         <SectionTitle onClick={() => onClickMenu(0)}>Header</SectionTitle>
         <SectionTitle onClick={() => onClickMenu(clientHeight)}>
           {PAGE_ONE_TITLE}
+        </SectionTitle>
+        <SectionTitle onClick={() => onClickMenu(clientHeight * 2)}>
+          {PAGE_TWO_TITLE}
         </SectionTitle>
       </Wrapper>
     </Container>
@@ -84,7 +87,7 @@ const Wrapper = styled.ul<ScrollBarPosition>`
     background-color: ${({ theme }) => theme.colors.primary};
     opacity: 0.3;
     width: 100%;
-    height: calc(100% / 2);
+    height: calc(100% / 3);
     z-index: 5;
     transition: 0.3s;
   }
@@ -95,7 +98,6 @@ const SectionTitle = styled.li`
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 2rem;
   writing-mode: vertical-lr;
   text-align: center;
   user-select: none;
@@ -103,4 +105,5 @@ const SectionTitle = styled.li`
   z-index: 6;
   transition: 0.1s;
   ${baseMenuHover}
+  height:20rem;
 `;

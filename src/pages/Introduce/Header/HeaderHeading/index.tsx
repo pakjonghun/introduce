@@ -1,20 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 
-const Headings = () => {
+const HeaderHeading = () => {
   return (
-    <Heading>
+    <Container>
       <HeadingSub>잘 정리해야 알아보기 쉽죠</HeadingSub>
-      <HeadingTop>보기쉽게 정리하는 </HeadingTop>
-      <HeadingMid>프론트앤드 개발자</HeadingMid>
-      <HeadingBottom>박정훈 입니다</HeadingBottom>
-    </Heading>
+      <HeadingDesc>보기쉽게 정리하는 </HeadingDesc>
+      <HeadingDesc>프론트앤드 개발자</HeadingDesc>
+      <HeadingDesc>박정훈 입니다</HeadingDesc>
+    </Container>
   );
 };
 
-export default Headings;
+export default HeaderHeading;
 
-const Heading = styled.h1`
+const Container = styled.h1`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,6 +39,4 @@ const HeadingSub = styled.span`
   }
 `;
 
-const HeadingTop = styled.p``;
-const HeadingMid = styled.p``;
-const HeadingBottom = styled.p``;
+const HeadingDesc = styled.p``;

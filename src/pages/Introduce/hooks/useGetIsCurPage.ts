@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { scrollTopState } from "../../recoil/Introduce/atom";
+import { scrollTopState } from "../../../recoil/Introduce/atom";
 import { useRecoilValue } from "recoil";
-import { getCurPage } from "../../utils/scrollFunctions";
+import { getCurPage } from "../../../utils/scrollFunctions";
 
 function useGetIsCurPage(page: number) {
   const scrollTop = useRecoilValue(scrollTopState);

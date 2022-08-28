@@ -2,9 +2,9 @@ import { useCallback } from "react";
 import {
   isSwitchingPageState,
   scrollTopState,
-} from "./../recoil/Introduce/atom";
+} from "../../../recoil/Introduce/atom";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { getCurPage } from "../utils/scrollFunctions";
+import { getCurPage } from "../../../utils/scrollFunctions";
 
 const useGetPageSwitchFunc = () => {
   const [isSwitchingPage, setIsSwitchingPageState] =

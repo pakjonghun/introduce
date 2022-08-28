@@ -1,14 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import GridBox from "./GridBox";
-import useGetCountingNumber from "../../../hooks/useGetCountingNumber";
+import useGetCountingNumber from "../../../../hooks/useGetCountingNumber";
 import ProfileImg from "./ProfileImg";
-import { fadeIn, fadeInAndRotate } from "../../../styles/animation";
-import useGetIsCurPage from "../useGetIsCurPage";
+import { fadeIn, fadeInAndRotate } from "../../../../styles/animation";
+import useGetIsCurPage from "../../hooks/useGetIsCurPage";
 
 const HeaderProfile = () => {
   const isAniStart = useGetIsCurPage(1);
-
   const time = useGetCountingNumber({
     endNumber: 2000,
     duration: 2000,
