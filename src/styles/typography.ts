@@ -3,7 +3,7 @@ import { getSvgPath } from "../utils/styleFunctions";
 
 export const baseMenuHover = css`
   &:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
     text-shadow: ${({ theme }) => theme.shadows.medium};
   }
 

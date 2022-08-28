@@ -1,13 +1,31 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useRecoilValue } from "recoil";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { scrollTopState } from "../../../recoil/Introduce/atom";
+import {
+  isSwitchingPageState,
+  scrollTopState,
+} from "../../../recoil/Introduce/atom";
+import { leftFadeIn } from "../../../styles/animation";
+import { baseMenuHover } from "../../../styles/typography";
 import { PAGE_ONE_TITLE } from "../../../texture/constants";
 
 const ScrollIndicator = () => {
   const wrapperRef = useRef<HTMLUListElement | null>(null);
   const scrollTop = useRecoilValue(scrollTopState);
   const [scrollBarPosition, setScrollBarPosition] = useState(0);
+  const clientHeight = document.documentElement.clientHeight;
+
+  const [isSwitchingPage, setIsSwitchingPage] =
+    useRecoilState(isSwitchingPageState);
+
+  const onClickMenu = useCallback(
+    (scrollTop: number) => {
+      if (isSwitchingPage) return;
+      setIsSwitchingPage(true);
+      window.scrollTo(0, scrollTop);
+    },
+    [setIsSwitchingPage, isSwitchingPage]
+  );
 
   useEffect(() => {
     if (wrapperRef.current) {
@@ -20,10 +38,11 @@ const ScrollIndicator = () => {
 
   return (
     <Container>
-      <Wrapper ref={wrapperRef}>
-        <ScrollBar top={scrollBarPosition} />
-        <SectionTitle>Header</SectionTitle>
-        <SectionTitle>{PAGE_ONE_TITLE}</SectionTitle>
+      <Wrapper top={scrollBarPosition} ref={wrapperRef}>
+        <SectionTitle onClick={() => onClickMenu(0)}>Header</SectionTitle>
+        <SectionTitle onClick={() => onClickMenu(clientHeight)}>
+          {PAGE_ONE_TITLE}
+        </SectionTitle>
       </Wrapper>
     </Container>
   );
@@ -35,15 +54,6 @@ interface ScrollBarPosition {
   top: number;
 }
 
-const ScrollBar = styled.div<ScrollBarPosition>`
-  position: absolute;
-  top: ${({ top }) => top}px;
-  background-color: ${({ theme }) => theme.colors.primary};
-  opacity: 0.3;
-  width: 100%;
-  height: calc(100% / 2);
-`;
-
 const Container = styled.div`
   position: fixed;
   left: 0;
@@ -53,14 +63,31 @@ const Container = styled.div`
   padding-top: 6.7rem;
   background-color: ${({ theme }) => theme.colors.secondaryLight};
   border-right: 1px solid ${({ theme }) => theme.colors.secondary};
-  z-index: 11;
   mix-blend-mode: multiply;
+  z-index: 11;
+  animation: ${leftFadeIn} 1.5s 1.5s backwards;
+
+  &:hover ul::before {
+    transform: scaleY(0);
+  }
 `;
 
-const Wrapper = styled.ul`
+const Wrapper = styled.ul<ScrollBarPosition>`
   position: relative;
   color: ${({ theme }) => theme.colors.grayDark3};
   text-transform: uppercase;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: ${({ top }) => top}px;
+    background-color: ${({ theme }) => theme.colors.primary};
+    opacity: 0.3;
+    width: 100%;
+    height: calc(100% / 2);
+    z-index: 5;
+    transition: 0.3s;
+  }
 `;
 
 const SectionTitle = styled.li`
@@ -71,4 +98,9 @@ const SectionTitle = styled.li`
   padding: 2rem;
   writing-mode: vertical-lr;
   text-align: center;
+  user-select: none;
+  cursor: pointer;
+  z-index: 6;
+  transition: 0.1s;
+  ${baseMenuHover}
 `;
