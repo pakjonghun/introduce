@@ -11,7 +11,11 @@ export const GlobalStyles = createGlobalStyle`
 
 html{
   font-size:62.5% ;
+  scroll-behavior: smooth;
+  
 }
+
+
 
 body{
   min-height:100vh;
@@ -20,6 +24,8 @@ body{
   font-size:${({ theme }) => theme.sizes.defaultFont} ;
   font-family:${({ theme }) => theme.fonts.primaryHanFont} ;
   color:${({ theme }) => theme.colors.grayDark2};
+
+
 }
 
 input{

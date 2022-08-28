@@ -1,23 +1,26 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 export interface UseRiseCountProps {
   endNumber: number;
   duration: number;
+  isAniStart: boolean;
   delay?: number;
   startNumber?: number;
 }
 
-const useRiseCount = ({
+const useGetCountingNumber = ({
   endNumber,
   duration,
   delay = 0,
   startNumber = 0,
+  isAniStart,
 }: UseRiseCountProps) => {
   const frame = 60;
   const totalFrameCount = Math.floor((frame / 1000) * duration);
   const [number, setNumber] = useState(startNumber);
 
   useEffect(() => {
+    if (!isAniStart) return;
     let number = startNumber;
 
     setTimeout(() => {
@@ -34,12 +37,12 @@ const useRiseCount = ({
         if (percent === 1) clearInterval(timer);
       }, 1000 / frame);
     }, delay);
-  }, [startNumber, endNumber, totalFrameCount, duration, delay]);
+  }, [startNumber, endNumber, totalFrameCount, duration, delay, isAniStart]);
 
   return number;
 };
 
-export default useRiseCount;
+export default useGetCountingNumber;
 
 interface EastOutExpoProps {
   t: number;

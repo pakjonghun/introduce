@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useRecoilValue } from "recoil";
 import styled, { css } from "styled-components";
+import { isSwitchingPageState } from "../../recoil/Introduce/atom";
 import { baseGradient } from "../../styles/typography";
-import Header from "./Header";
 import Navigation from "./Navigation";
 import PageTitle from "./PageTitle";
 
 interface MainLayoutProps {
   title: string;
   children: React.ReactNode;
+  canClickEle?: boolean;
   isBack?: boolean;
 }
 
@@ -16,11 +18,12 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   children,
   isBack = false,
 }) => {
+  const isSwitchingPage = useRecoilValue(isSwitchingPageState);
+
   return (
-    <Container>
+    <Container isSwitchingPage={isSwitchingPage}>
       <PageTitle title={title} />
       <Navigation />
-      <Header />
       <Main>{children}</Main>
     </Container>
   );
@@ -28,9 +31,13 @@ const MainLayout: React.FC<MainLayoutProps> = ({
 
 export default MainLayout;
 
-const Container = styled.div`
-  height: 100vh;
-  padding: 2rem 3rem;
+interface IsSwitchingPageProp {
+  isSwitchingPage: boolean;
+}
+
+const Container = styled.div<IsSwitchingPageProp>`
+  pointer-events: ${({ isSwitchingPage }) =>
+    isSwitchingPage ? "none" : "auto"};
   ${({ theme }) => css`
     ${baseGradient(theme.colors.secondaryLight, theme.colors.secondary)}
   `}

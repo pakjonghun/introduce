@@ -1,15 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 import GridBox from "./GridBox";
-import useRiseNumber from "../../../hooks/useRiseNumber";
+import useGetCountingNumber from "../../../hooks/useGetCountingNumber";
 import ProfileImg from "./ProfileImg";
 import { fadeIn, fadeInAndRotate } from "../../../styles/animation";
+import useGetIsCurPage from "../useGetIsCurPage";
 
 const HeaderProfile = () => {
-  const time = useRiseNumber({ endNumber: 2000, duration: 2000 });
+  const isAniStart = useGetIsCurPage(1);
+
+  const time = useGetCountingNumber({
+    endNumber: 2000,
+    duration: 2000,
+    isAniStart,
+  });
 
   return (
-    <HeaderRight>
+    <Container>
       <GridBox />
       <ProfileImg />
       <SquareBoxImg>
@@ -17,13 +24,13 @@ const HeaderProfile = () => {
         <Desc>{`${time}일`}</Desc>
       </SquareBoxImg>
       <SmallSquareBoxImg />
-    </HeaderRight>
+    </Container>
   );
 };
 
 export default HeaderProfile;
 
-const HeaderRight = styled.div`
+const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(8, 6rem);
   grid-template-rows: repeat(10, 6rem);

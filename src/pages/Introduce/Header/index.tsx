@@ -1,13 +1,13 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 import { leftFadeIn } from "../../../styles/animation";
 import EnterButtons from "./EnterButtons";
 import HeaderProfile from "./HeaderProfile";
 import Headings from "./Headings";
 
-const Header = () => {
+const Header = forwardRef<HTMLElement>((_, ref) => {
   return (
-    <Container>
+    <Container ref={ref}>
       <Banner>
         <Headings />
         <EnterButtons />
@@ -15,7 +15,7 @@ const Header = () => {
       <HeaderProfile />
     </Container>
   );
-};
+});
 
 export default Header;
 
@@ -24,7 +24,8 @@ const Container = styled.header`
   grid-template-columns: 46rem 1fr;
   align-items: center;
   justify-content: center;
-  margin-top: 10rem;
+  height: 100vh;
+  padding: 0 3rem 0 10rem;
 `;
 
 const Banner = styled.div`

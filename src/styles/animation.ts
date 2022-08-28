@@ -1,4 +1,4 @@
-import { keyframes } from "styled-components";
+import { DefaultTheme, keyframes } from "styled-components";
 
 export const leftFadeIn = keyframes`
   0%{
@@ -44,3 +44,58 @@ export const fadeIn = keyframes`
     opacity:1 ;
   }
   `;
+
+export const temptation = keyframes`
+0%{
+  transform:translateY(0)
+}
+20%{
+  transform:translateY(0)
+}
+40%{
+  transform:translateY(-2rem);
+}
+50%{
+  transform:translateY(0);
+}
+60%{
+  transform:translateY(-1rem)
+}
+80%{
+  transform:translateY(0)
+}
+100%{
+  transform:translateY(0)
+}
+`;
+
+export const blinking = (theme: DefaultTheme) => {
+  return keyframes`
+  0%{
+   background-color :${theme.colors.grayDark3} ;
+ } 
+ 50%{
+  background-color :transparent ;
+ }
+ 
+ 100%{
+  background-color :transparent ;
+ }
+`;
+};
+
+export const scaleUp = (isAniStart: boolean) => {
+  if (!isAniStart) return "none";
+  else {
+    return keyframes`
+
+    0%{
+      transform:scale(0);
+    }
+    
+    100%{
+      transform:scale(1);
+    }
+    `;
+  }
+};

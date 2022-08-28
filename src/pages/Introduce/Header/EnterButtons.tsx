@@ -1,14 +1,18 @@
 import React from "react";
 import styled from "styled-components";
+import useGetPageSwitchFunc from "../../../hooks/useGetPageSwitchFunc";
 import { bottomFadeIn } from "../../../styles/animation";
 import { baseBoxHover } from "../../../styles/typography";
-import { INTRODUCE_TEXT, TIL_ENTER_TEXT } from "../texture/constants";
+import { INTRODUCE_TEXT, TIL_ENTER_TEXT } from "../../../texture/constants";
 
 const EnterButtons = () => {
+  const onIntroduceClick = useGetPageSwitchFunc();
   return (
     <ButtonList>
       <EnterButton>{TIL_ENTER_TEXT}</EnterButton>
-      <EnterIntroduce>{INTRODUCE_TEXT}</EnterIntroduce>
+      <EnterIntroduce onClick={onIntroduceClick}>
+        {INTRODUCE_TEXT}
+      </EnterIntroduce>
     </ButtonList>
   );
 };
