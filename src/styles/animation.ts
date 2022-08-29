@@ -125,3 +125,26 @@ export const scaleUp = (isAniStart: boolean) => {
     `;
   }
 };
+
+export const spinAndScale = keyframes`
+  0%{
+    transform:rotate(0) scale(.9);
+  }
+
+  25%{
+    transform:rotate(90deg) scale(1.2);
+  }
+
+  50%{
+    transform:rotate(180deg) scale(.9);
+  }
+
+  75%{
+    transform:rotate(270deg) scale(1.2);
+  }
+
+  100%{
+    transform:rotate(360deg) scale(.9);
+  }
+
+`;

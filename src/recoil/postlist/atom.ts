@@ -24,3 +24,8 @@ export const isSearchingState = atom({
   key: "isSearchingState",
   default: false,
 });
+
+export const isSearchLoadingState = atom({
+  key: "isSearchLoadingState",
+  default: false,
+});

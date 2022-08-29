@@ -1,6 +1,7 @@
 import React from "react";
 import { useRecoilValueLoadable } from "recoil";
 import styled from "styled-components";
+import LoadingSpinner from "../../../components/LoadingSpinner";
 import { getPostListsQuery } from "../../../recoil/postlist/selector";
 import PostLists from "./PostLists";
 
@@ -9,7 +10,7 @@ const PostListBody = () => {
 
   switch (postLists.state) {
     case "loading":
-      <div>Loading</div>;
+      <LoadingSpinner />;
       break;
 
     case "hasValue":
