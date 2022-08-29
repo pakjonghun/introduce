@@ -1,4 +1,3 @@
-import { URLSearchParams } from "url";
 import { BASE_URL } from "./constants";
 
 interface FetchProps {

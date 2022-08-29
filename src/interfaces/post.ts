@@ -3,7 +3,7 @@ export interface PostHead {
   date: string;
 }
 
-export interface PostListResponse {
+export interface Post {
   id: string;
   head: PostHead;
   body: string;

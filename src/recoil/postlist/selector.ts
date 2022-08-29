@@ -1,7 +1,7 @@
+import { PostListResponse } from "./../../interfaces/postList";
 import { categoryState, pageState, searchTermState } from "./atom";
 import { Loadable, selector, selectorFamily, waitForNone } from "recoil";
-import { PostListResponse } from "../../interfaces/post";
-import { getPost, getPostList } from "../../api/fetchFunc";
+import { getPostList } from "../../api/fetchFunc";
 import { PER_PAGE } from "./constants";
 
 export const getPostListQuery = selectorFamily({
@@ -9,9 +9,9 @@ export const getPostListQuery = selectorFamily({
   get:
     (page: number) =>
     ({ get }) => {
-      const searchTerm = get(searchTermState);
+      const term = get(searchTermState);
       const category = get(categoryState);
-      return getPostList({ page, category, searchTerm, perPage: PER_PAGE });
+      return getPostList({ page, category, term, perPage: PER_PAGE });
     },
 });
 

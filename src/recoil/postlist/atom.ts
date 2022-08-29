@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 
-export const searchPostCountState = atom({
-  key: "searchPostCountState",
+export const postListCountState = atom({
+  key: "postListCountState",
   default: 0,
 });
 
@@ -18,4 +18,9 @@ export const searchTermState = atom({
 export const categoryState = atom({
   key: "categoryState",
   default: "",
+});
+
+export const isSearchingState = atom({
+  key: "isSearchingState",
+  default: false,
 });

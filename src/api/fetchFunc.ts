@@ -1,7 +1,7 @@
 import { getFetch } from "./utils";
 
 export interface RequestGetPostList {
-  searchTerm?: string;
+  term?: string;
   category?: string;
   page: number;
   perPage: number;

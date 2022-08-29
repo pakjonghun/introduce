@@ -1,6 +1,6 @@
-import { PostListResponse } from "./post";
+import { Post } from "./post";
 
-export interface PostSearchResults {
-  data: PostListResponse[];
+export interface PostListResponse {
+  data: Post[];
   totalCount: number;
 }

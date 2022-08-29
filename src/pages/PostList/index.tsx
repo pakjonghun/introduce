@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import MainLayout from "../../components/MainLayout";
+import PostListBody from "./PostListBody";
 import PostListHeader from "./PostListHeader";
 
 const PostList = () => {
@@ -9,6 +10,7 @@ const PostList = () => {
       <Container>
         <Wrapper>
           <PostListHeader />
+          <PostListBody />
         </Wrapper>
       </Container>
     </MainLayout>
@@ -43,4 +45,5 @@ const Wrapper = styled.div`
   outline-offset: 1.5rem;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.secondaryLight};
+  overflow: hidden;
 `;
