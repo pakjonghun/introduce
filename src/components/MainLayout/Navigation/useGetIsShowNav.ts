@@ -5,7 +5,7 @@ import useDelaySetState from "../../../hooks/useDelaySetState";
 const useGetIsShowNav = () => {
   const scrollDirection = useRecoilValue(scrollDirectionState);
   const isShowNav = useDelaySetState({
-    delay: 500,
+    delay: 100,
     state: scrollDirection === null,
     isNotDelay: scrollDirection !== null,
   });

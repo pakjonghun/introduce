@@ -5,14 +5,12 @@ export interface UseGetCountingNumberProps {
   endNumber: number;
   duration: number;
   isAniStart: boolean;
-  delay?: number;
   startNumber?: number;
 }
 
 const useGetCountingNumber = ({
   endNumber,
   duration,
-  delay = 0,
   startNumber = 0,
   isAniStart,
 }: UseGetCountingNumberProps) => {
@@ -24,21 +22,19 @@ const useGetCountingNumber = ({
     if (!isAniStart) return;
     let number = startNumber;
 
-    setTimeout(() => {
-      const timer = setInterval(() => {
-        number += 1;
-        const percent = easeOutExpo({
-          t: number / totalFrameCount,
-          b: startNumber,
-          c: 1,
-          d: 1,
-        });
-        const currentNumber = Math.floor((endNumber - startNumber) * percent);
-        setNumber(currentNumber);
-        if (percent === 1) clearInterval(timer);
-      }, 1000 / frame);
-    }, delay);
-  }, [startNumber, endNumber, totalFrameCount, duration, delay, isAniStart]);
+    const timer = setInterval(() => {
+      number += 1;
+      const percent = easeOutExpo({
+        t: number / totalFrameCount,
+        b: startNumber,
+        c: 1,
+        d: 1,
+      });
+      const currentNumber = Math.floor((endNumber - startNumber) * percent);
+      setNumber(currentNumber);
+      if (percent === 1) clearInterval(timer);
+    }, 1000 / frame);
+  }, [startNumber, endNumber, totalFrameCount, duration, isAniStart]);
 
   return number;
 };

@@ -1,4 +1,9 @@
-export function getCurPage(scrollTop: number, clientHeight: number) {
+const distanceRate = 1 / 3;
+
+export function getCurPageWhenNotScrolling(
+  scrollTop: number,
+  clientHeight: number
+) {
   switch (true) {
     case scrollTop <= 0:
       return 1;
@@ -12,6 +17,7 @@ export function getCurPage(scrollTop: number, clientHeight: number) {
       throw new Error("introduce curpagestate error");
   }
 }
+
 interface GetCurrentPageProps {
   scrollTop: number;
   clientHeight: number;
@@ -23,9 +29,8 @@ export function getCurrentPage({
   clientHeight,
   scrollDirection,
 }: GetCurrentPageProps) {
-  const distanceRate = 1 / 3;
   const distance = clientHeight * distanceRate;
-  console.log(scrollDirection);
+
   if (scrollDirection === "down") {
     switch (true) {
       case scrollTop <= distance:

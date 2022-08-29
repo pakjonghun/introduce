@@ -3,12 +3,12 @@ import { getSvgPath } from "../utils/styleFunctions";
 
 export const baseMenuHover = css`
   &:hover {
-    transform: scale(1.02);
+    color: ${({ theme }) => theme.colors.grayDark3};
     text-shadow: ${({ theme }) => theme.shadows.medium};
   }
 
   &:active {
-    transform: scale(1);
+    color: ${({ theme }) => theme.colors.grayDark1};
   }
 `;
 

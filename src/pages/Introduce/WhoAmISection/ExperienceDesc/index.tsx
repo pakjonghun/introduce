@@ -21,8 +21,12 @@ const ExperienceDesc = () => {
       </MainDesc>
 
       <Desc>
-        <CommonDesc>배운 지식을 정리 하고, 회고 합니다.</CommonDesc>
-        <CommonDesc>꾸준히 작은 프로젝트를 진행 하고 있습니다.</CommonDesc>
+        <CommonDesc href='https://stitch-saw-c14.notion.site/43ab8c9cecb64cf981bd10609024a071'>
+          배운 지식을 정리 하고, 회고 합니다.
+        </CommonDesc>
+        <CommonDesc href='https://github.com/pakjonghun'>
+          꾸준히 작은 프로젝트를 진행 하고 있습니다.
+        </CommonDesc>
         <CommonDesc>
           (주)ABC 스튜디오에서 프론트 개발자로 인턴 경험이 있습니다.
         </CommonDesc>
@@ -62,7 +66,7 @@ const CommonDesc = styled.a`
   padding: 2rem 0;
   cursor: pointer;
   transition: 0.2s;
-
+  color: ${({ theme }) => theme.colors.grayDark1};
   &:hover {
     ${baseMenuHover}
   }

@@ -68,10 +68,7 @@ const Container = styled.div`
   border-right: 1px solid ${({ theme }) => theme.colors.secondary};
   mix-blend-mode: multiply;
   z-index: 11;
-  animation: ${leftFadeIn} 1.5s 1.5s backwards;
-
-  &:hover ul::before {
-  }
+  animation: ${leftFadeIn} 1s 1s backwards;
 `;
 
 const Wrapper = styled.ul<ScrollBarPosition>`
@@ -88,7 +85,7 @@ const Wrapper = styled.ul<ScrollBarPosition>`
     width: 100%;
     height: calc(100% / 3);
     z-index: 5;
-    transition: 0.3s;
+    /* transition: 0.01s; */
   }
 `;
 

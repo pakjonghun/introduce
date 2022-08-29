@@ -52,7 +52,7 @@ const ProjectsSection = () => {
             <ProjectCard
               projectNum={3}
               img='https://imagedelivery.net/0ZP-N9B45ji28JoChYUvWw/879a8498-a87f-405a-4380-e7657693a300/projectCard'
-              createdAt='2022-05'
+              createdAt='2022-03'
               desc='today trip'
               gitRepo='https://github.com/pakjonghun/today-trip'
               url='https://today-trip.netlify.app/'

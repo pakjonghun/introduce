@@ -1,18 +1,25 @@
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   isSwitchingPageState,
   scrollTopState,
 } from "../../../recoil/Introduce/atom";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { getCurPage } from "../../../utils/scrollFunctions";
+import { getCurPageWhenNotScrolling } from "../../../utils/scrollFunctions";
 
 const useGetPageSwitchFunc = () => {
   const [isSwitchingPage, setIsSwitchingPageState] =
     useRecoilState(isSwitchingPageState);
 
-  const clientHeight = document.documentElement.clientHeight;
   const curTop = useRecoilValue(scrollTopState);
-  const curPage = getCurPage(curTop, clientHeight);
+  const [curPage, setCurPage] = useState(0);
+  const [clientHeight, setClientHeight] = useState(0);
+
+  useEffect(() => {
+    const clientHeight = document.documentElement.clientHeight;
+    const curPage = getCurPageWhenNotScrolling(curTop, clientHeight);
+    setClientHeight(clientHeight);
+    setCurPage(curPage);
+  }, [curTop]);
 
   const onClick = useCallback(() => {
     if (isSwitchingPage) return;
