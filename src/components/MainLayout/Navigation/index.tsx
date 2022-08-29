@@ -8,9 +8,8 @@ import useGetIsShowNav from "./useGetIsShowNav";
 const Navigation = () => {
   const { pathname } = useLocation();
   const isShowNav = useGetIsShowNav();
-
   return (
-    <Container isShowNav={isShowNav}>
+    <Container isShowNav={pathname === "/posts" || isShowNav}>
       <PageMark href='/'>whoami</PageMark>
       <RightMenuList>
         <Menu isSelected={pathname === "/posts"} href='/posts'>
