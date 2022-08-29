@@ -1,6 +1,6 @@
-import { Post } from "./post";
+import { PostListResponse } from "./post";
 
 export interface PostSearchResults {
-  data: Post[];
+  data: PostListResponse[];
   totalCount: number;
 }
