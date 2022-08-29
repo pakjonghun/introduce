@@ -12,6 +12,30 @@ export const leftFadeIn = keyframes`
   }
 `;
 
+export const rightFadeIn = keyframes`
+  0%{
+    opacity:0 ;
+    transform:translateX(40rem) ;
+  }
+
+  100%{
+    opacity:1 ;
+    transform:translate(-50%, -50%);
+  }
+`;
+
+export const fadeInAndRotateByAngle = (angle: string) => keyframes`
+  0%{
+    opacity:0 ;
+    transform:scale(0) rotate(0) ;
+  }
+
+  100%{
+    opacity:1 ;
+    transform:scale(1) rotate(${angle});
+  }
+`;
+
 export const bottomFadeIn = keyframes`
 0%{
     opacity:0 ;
@@ -27,7 +51,7 @@ export const bottomFadeIn = keyframes`
 export const fadeInAndRotate = keyframes`
   0%{
     opacity:0 ;
-    transform: rotate(1,1,0,0);
+    transform: rotate3d(1,1,0,0);
   }
   50%,90%{
     opacity:1 ;
@@ -69,10 +93,12 @@ export const temptation = keyframes`
 }
 `;
 
-export const blinking = (theme: DefaultTheme) => {
+export const blinking = (theme: DefaultTheme, isDarkMode: boolean) => {
   return keyframes`
   0%{
-   background-color :${theme.colors.grayDark3} ;
+   background-color :${
+     isDarkMode ? theme.colors.grayLight1 : theme.colors.grayDark3
+   } ;
  } 
  50%{
   background-color :transparent ;

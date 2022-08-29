@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useRecoilValue } from "recoil";
 import styled, { css } from "styled-components";
 import { isSwitchingPageState } from "../../recoil/Introduce/atom";

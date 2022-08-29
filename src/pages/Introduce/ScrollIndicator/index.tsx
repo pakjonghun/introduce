@@ -71,7 +71,6 @@ const Container = styled.div`
   animation: ${leftFadeIn} 1.5s 1.5s backwards;
 
   &:hover ul::before {
-    transform: scaleY(0);
   }
 `;
 
@@ -104,6 +103,14 @@ const SectionTitle = styled.li`
   cursor: pointer;
   z-index: 6;
   transition: 0.1s;
-  ${baseMenuHover}
-  height:20rem;
+  height: 20rem;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.primaryLight};
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
 `;
