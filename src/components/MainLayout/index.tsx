@@ -22,9 +22,11 @@ const MainLayout: React.FC<MainLayoutProps> = ({
 
   return (
     <Container isSwitchingPage={isSwitchingPage}>
-      <PageTitle title={title} />
-      <Navigation />
-      <Main>{children}</Main>
+      <Wrapper>
+        <PageTitle title={title} />
+        <Navigation />
+        <Main>{children}</Main>
+      </Wrapper>
     </Container>
   );
 };
@@ -36,11 +38,17 @@ interface IsSwitchingPageProp {
 }
 
 const Container = styled.div<IsSwitchingPageProp>`
+  width: 100%;
   pointer-events: ${({ isSwitchingPage }) =>
     isSwitchingPage ? "none" : "auto"};
   ${({ theme }) => css`
     ${baseGradient(theme.colors.secondaryLight, theme.colors.secondary)}
   `}
+`;
+
+const Wrapper = styled.div`
+  max-width: 130rem;
+  margin: 0 auto;
 `;
 
 const Main = styled.main``;

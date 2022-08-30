@@ -37,9 +37,11 @@ interface IsSelected {
 const Container = styled.nav<IsShowNav>`
   position: fixed;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   justify-content: space-between;
+  max-width: 130rem;
   width: 100%;
   padding: 2rem 3rem 2rem 9rem;
   background-color: ${({ theme }) => theme.colors.secondaryLight};

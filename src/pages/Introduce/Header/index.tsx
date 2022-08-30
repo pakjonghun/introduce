@@ -24,7 +24,6 @@ const Container = styled.header`
   display: grid;
   grid-template-columns: 46rem 1fr;
   align-items: center;
-  justify-content: center;
   padding: 0 3rem 0 10rem;
   height: ${({ theme }) => theme.values.baseVertical};
   ${media.sm} {

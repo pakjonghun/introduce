@@ -42,6 +42,7 @@ body{
   font-size:${({ theme }) => theme.sizes.defaultFont} ;
   font-family:${({ theme }) => theme.fonts.primaryHanFont} ;
   color:${({ theme }) => theme.colors.grayDark2};
+  
   &::-webkit-scrollbar {
     display: none;
   }

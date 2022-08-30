@@ -34,7 +34,7 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(8, 6rem);
   grid-template-rows: repeat(10, 6rem);
-  justify-self: center;
+  justify-self: right;
 
   ${media.sm} {
     justify-self: center;
