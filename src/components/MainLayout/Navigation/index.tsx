@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import styled, { css } from "styled-components";
+import { media } from "../../../styles/media";
 import { baseGradient, baseMenuHover } from "../../../styles/typography";
 import { INTRODUCE_TEXT, TIL_ENTER_TEXT } from "../../../texture/constants";
 import useGetIsShowNav from "./useGetIsShowNav";
@@ -43,12 +44,17 @@ const Container = styled.nav<IsShowNav>`
   justify-content: space-between;
   max-width: 130rem;
   width: 100%;
+  margin-left: 7rem;
   padding: 2rem 3rem 2rem 9rem;
   background-color: ${({ theme }) => theme.colors.secondaryLight};
   border-bottom: 1px solid ${({ theme }) => theme.colors.primaryLight};
   opacity: ${({ isShowNav }) => (isShowNav ? 1 : 0)};
   z-index: 10;
   transition: 0.2s;
+
+  ${media.sm} {
+    margin-left: 0;
+  }
 `;
 
 const PageMark = styled.a`

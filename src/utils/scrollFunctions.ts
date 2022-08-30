@@ -1,4 +1,4 @@
-const distanceRate = 1 / 5;
+const distanceRate = 1 / 10;
 
 export function getCurPageWhenNotScrolling(
   scrollTop: number,

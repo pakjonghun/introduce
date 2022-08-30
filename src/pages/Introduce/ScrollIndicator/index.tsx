@@ -1,19 +1,23 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useRecoilValueLoadable } from "recoil";
 import styled from "styled-components";
 import {
   isSwitchingPageState,
+  scrollDirectionState,
   scrollTopState,
 } from "../../../recoil/Introduce/atom";
 import { leftFadeIn } from "../../../styles/animation";
 import { media } from "../../../styles/media";
 import { PAGE_ONE_TITLE, PAGE_TWO_TITLE } from "../../../texture/constants";
+import { getCurrentPage } from "../../../utils/scrollFunctions";
 
 const ScrollIndicator = () => {
   const wrapperRef = useRef<HTMLUListElement | null>(null);
   const scrollTop = useRecoilValue(scrollTopState);
-  const [scrollBarPosition, setScrollBarPosition] = useState(0);
   const clientHeight = document.documentElement.clientHeight;
+  const [scrollBarPosition, setScrollBarPosition] = useState(0);
+
+  const scrollDirection = useRecoilValue(scrollDirectionState);
 
   const [isSwitchingPage, setIsSwitchingPage] =
     useRecoilState(isSwitchingPageState);
@@ -29,11 +33,17 @@ const ScrollIndicator = () => {
 
   useEffect(() => {
     if (wrapperRef.current) {
-      const wrapperHeight = wrapperRef.current.clientHeight;
-      const scrollHeight = document.documentElement.scrollHeight;
-      const scrollProgress = scrollTop / scrollHeight;
-
-      setScrollBarPosition(wrapperHeight * scrollProgress);
+      const curPage = getCurrentPage({
+        scrollTop,
+        clientHeight,
+        scrollDirection,
+      });
+      if (curPage) {
+        console.log(curPage);
+        setScrollBarPosition(
+          wrapperRef.current.clientHeight * (curPage - 1) * 0.25
+        );
+      }
     }
   }, [scrollTop]);
 
@@ -46,6 +56,9 @@ const ScrollIndicator = () => {
         </SectionTitle>
         <SectionTitle onClick={() => onClickMenu(clientHeight * 2)}>
           {PAGE_TWO_TITLE}
+        </SectionTitle>
+        <SectionTitle onClick={() => onClickMenu(clientHeight * 3)}>
+          footer
         </SectionTitle>
       </Wrapper>
     </Container>
@@ -88,7 +101,7 @@ const Wrapper = styled.ul<ScrollBarPosition>`
     background-color: ${({ theme }) => theme.colors.primary};
     opacity: 0.3;
     width: 100%;
-    height: calc(100% / 3);
+    height: calc(100% / 4);
     z-index: 5;
   }
 `;

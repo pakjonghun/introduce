@@ -7,6 +7,7 @@ import WhoAmISection from "./WhoAmISection";
 import useSetIsSwitchingPageFalse from "./hooks/useSetIsSwitchingPageFalse";
 import useSetScrollTopAndDirection from "./hooks/useSetScrollTopAndDirection";
 import ProjectsSection from "./ProjectsSection";
+import Footer from "./Footer";
 
 const Introduce = () => {
   useSetScrollTopAndDirection();
@@ -19,6 +20,7 @@ const Introduce = () => {
       <WhoAmISection />
       <ProjectsSection />
       <TemtationButton />
+      <Footer />
     </MainLayout>
   );
 };
