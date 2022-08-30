@@ -1,7 +1,9 @@
 import React from "react";
+import { useRecoilValue } from "recoil";
 import styled, { css } from "styled-components";
 import useGetIsCurPage from "../../pages/Introduce/hooks/useGetIsCurPage";
 import useGetTypingText from "../../pages/Introduce/hooks/useGetTypingText";
+import { scrollDirectionState } from "../../recoil/Introduce/atom";
 import { media } from "../../styles/media";
 import Border from "../Border";
 import SectionTitle from "./SectionTitle";
@@ -20,6 +22,7 @@ const SectionLayout: React.FC<SectionLayoutProps> = ({
   isDarkMode = false,
 }) => {
   const isCurPage = useGetIsCurPage(page);
+
   const titleText = useGetTypingText({
     title,
     interval: 200,

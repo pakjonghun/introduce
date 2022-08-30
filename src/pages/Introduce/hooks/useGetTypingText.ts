@@ -5,6 +5,7 @@ interface UseGetTypingTextProps {
   title: string;
   interval: number;
   isAniStart: boolean;
+  isScrolling?: boolean;
 }
 
 const useGetTypingText = ({
@@ -15,7 +16,10 @@ const useGetTypingText = ({
   const [text, setText] = useState("");
 
   useEffect(() => {
-    if (!isAniStart) return;
+    if (!isAniStart) {
+      setText("");
+      return;
+    }
     let idx = 0;
     let word = "";
 

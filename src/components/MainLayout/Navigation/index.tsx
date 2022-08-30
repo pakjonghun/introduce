@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { baseGradient, baseMenuHover } from "../../../styles/typography";
@@ -8,6 +8,7 @@ import useGetIsShowNav from "./useGetIsShowNav";
 const Navigation = () => {
   const { pathname } = useLocation();
   const isShowNav = useGetIsShowNav();
+
   return (
     <Container isShowNav={pathname === "/posts" || isShowNav}>
       <PageMark href='/'>whoami</PageMark>

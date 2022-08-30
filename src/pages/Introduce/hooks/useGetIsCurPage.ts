@@ -11,7 +11,6 @@ function useGetIsCurPage(page: number) {
   const scrollTop = useRecoilValue(scrollTopState);
   const scrollDirection = useRecoilValue(scrollDirectionState);
   const [curPage, setCurPage] = useState(0);
-
   useEffect(() => {
     const curPage = getCurrentPage({
       scrollTop,
