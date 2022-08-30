@@ -2,6 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import useGetIsCurPage from "../../pages/Introduce/hooks/useGetIsCurPage";
 import useGetTypingText from "../../pages/Introduce/hooks/useGetTypingText";
+import { media } from "../../styles/media";
 import Border from "../Border";
 import SectionTitle from "./SectionTitle";
 
@@ -44,15 +45,19 @@ const Container = styled.section<IsDarkModeProp>`
   display: grid;
   grid-template-rows: min-content min-content 1fr;
   grid-row-gap: 3rem;
-  height: 100vh;
   margin-left: 7rem;
   padding: 8rem 3rem 2rem 3rem;
+  height: ${({ theme }) => theme.values.baseVertical};
   ${({ isDarkMode }) => {
     if (isDarkMode)
       return css`
         background-color: ${({ theme }) => theme.colors.grayDark3};
       `;
   }}
+
+  ${media.sm} {
+    margin-left: 0;
+  }
 `;
 
 const SectionBorder = styled(Border)`

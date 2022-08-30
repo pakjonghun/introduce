@@ -23,7 +23,6 @@ const useGetPageSwitchFunc = () => {
 
   const onClick = useCallback(() => {
     if (isSwitchingPage) return;
-
     setIsSwitchingPageState(true);
     window.scrollTo(0, curPage * clientHeight);
   }, [setIsSwitchingPageState, curPage, clientHeight, isSwitchingPage]);

@@ -6,7 +6,7 @@ import {
   scrollTopState,
 } from "../../../recoil/Introduce/atom";
 import { leftFadeIn } from "../../../styles/animation";
-import { baseMenuHover } from "../../../styles/typography";
+import { media } from "../../../styles/media";
 import { PAGE_ONE_TITLE, PAGE_TWO_TITLE } from "../../../texture/constants";
 
 const ScrollIndicator = () => {
@@ -32,6 +32,7 @@ const ScrollIndicator = () => {
       const wrapperHeight = wrapperRef.current.clientHeight;
       const scrollHeight = document.documentElement.scrollHeight;
       const scrollProgress = scrollTop / scrollHeight;
+
       setScrollBarPosition(wrapperHeight * scrollProgress);
     }
   }, [scrollTop]);
@@ -69,6 +70,10 @@ const Container = styled.div`
   mix-blend-mode: multiply;
   z-index: 11;
   animation: ${leftFadeIn} 1s 1s backwards;
+
+  ${media.sm} {
+    display: none;
+  }
 `;
 
 const Wrapper = styled.ul<ScrollBarPosition>`
@@ -85,7 +90,6 @@ const Wrapper = styled.ul<ScrollBarPosition>`
     width: 100%;
     height: calc(100% / 3);
     z-index: 5;
-    /* transition: 0.01s; */
   }
 `;
 
@@ -94,13 +98,15 @@ const SectionTitle = styled.li`
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 20rem;
+  padding-left: 0.2rem;
   writing-mode: vertical-lr;
   text-align: center;
+  font-size: 1.4rem;
   user-select: none;
   cursor: pointer;
   z-index: 6;
   transition: 0.1s;
-  height: 20rem;
   transition: 0.2s;
 
   &:hover {

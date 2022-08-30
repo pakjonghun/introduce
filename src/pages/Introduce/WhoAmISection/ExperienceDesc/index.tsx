@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { media } from "../../../../styles/media";
 import { baseMenuHover } from "../../../../styles/typography";
 
 const ExperienceDesc = () => {
@@ -40,34 +41,55 @@ export default ExperienceDesc;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 4rem;
   color: ${({ theme }) => theme.colors.grayDark3};
+  ${media.sm} {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+  }
 `;
 
 const MainDesc = styled.div`
   margin-bottom: 3rem;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   font-weight: 700;
+
+  ${media.sm} {
+    margin-bottom: 7rem;
+  }
 `;
 
 const FirstLine = styled.p``;
 const SecondLine = styled.p``;
 
 const Desc = styled.div`
+  display: flex;
   flex-direction: column;
   margin-top: 4rem;
+
+  ${media.sm} {
+    margin-top: 2rem;
+  }
 `;
 
 const CommonDesc = styled.a`
   display: block;
   width: 90%;
-  font-size: 1.5rem;
+  font-size: 2rem;
   border-bottom: 1px solid currentColor;
   padding: 2rem 0;
   cursor: pointer;
   transition: 0.2s;
   color: ${({ theme }) => theme.colors.grayDark1};
+
   &:hover {
     ${baseMenuHover}
+  }
+
+  ${media.sm} {
+    border: none;
+    flex-grow: 1;
+    justify-content: space-between;
   }
 `;

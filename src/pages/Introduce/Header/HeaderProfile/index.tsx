@@ -5,6 +5,7 @@ import useGetCountingNumber from "../../../../hooks/useGetCountingNumber";
 import ProfileImg from "./ProfileImg";
 import { fadeIn, fadeInAndRotate } from "../../../../styles/animation";
 import useGetIsCurPage from "../../hooks/useGetIsCurPage";
+import { media } from "../../../../styles/media";
 
 const HeaderProfile = () => {
   const isAniStart = useGetIsCurPage(1);
@@ -33,7 +34,11 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(8, 6rem);
   grid-template-rows: repeat(10, 6rem);
-  justify-self: right;
+  justify-self: center;
+
+  ${media.sm} {
+    justify-self: center;
+  }
 `;
 
 const SquareBoxImg = styled.div`

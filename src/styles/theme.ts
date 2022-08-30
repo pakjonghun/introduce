@@ -2,6 +2,7 @@ import { DefaultTheme } from "styled-components";
 export const theme: DefaultTheme = {
   values: {
     baseRadius: "5px",
+    baseVertical: "100vh",
   },
   sizes: {
     defaultFont: "1.6rem",

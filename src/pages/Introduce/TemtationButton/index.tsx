@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import useGetPageSwitchFunc from "../hooks/useGetPageSwitchFunc";
 import { temptation } from "../../../styles/animation";
@@ -9,7 +9,7 @@ import { useRecoilValue } from "recoil";
 import { scrollTopState } from "../../../recoil/Introduce/atom";
 
 const TemtationButton = () => {
-  const onClick = useGetPageSwitchFunc();
+  const onDownButtonClick = useGetPageSwitchFunc();
   const isButtonShow = useGetIsShowButton();
   const scrollTop = useRecoilValue(scrollTopState);
   const curPage = getCurPageWhenNotScrolling(
@@ -20,7 +20,7 @@ const TemtationButton = () => {
   return (
     <DownArrow
       isDarkMode={curPage === 3}
-      onClick={onClick}
+      onClick={onDownButtonClick}
       isShow={isButtonShow}
     />
   );

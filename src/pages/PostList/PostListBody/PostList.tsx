@@ -37,8 +37,8 @@ export default PostList;
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-  grid-gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-gap: 1rem;
   width: 73%;
   padding: 1rem 2rem;
   transition: 0.2s;

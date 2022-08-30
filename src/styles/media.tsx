@@ -2,8 +2,9 @@ const getMediaQuery = (breakPoint: number) =>
   `@media screen and (max-width:${breakPoint / 16}em)`;
 
 export const media = {
-  lg: getMediaQuery(730),
-  md: getMediaQuery(600),
-  sm: getMediaQuery(500),
-  xs: getMediaQuery(320),
+  xl: getMediaQuery(1300),
+  lg: getMediaQuery(1100),
+  md: getMediaQuery(900),
+  sm: getMediaQuery(750),
+  xs: getMediaQuery(670),
 };

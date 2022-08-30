@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { blinking } from "../../styles/animation";
+import { media } from "../../styles/media";
 
 interface SectionTitleProps {
   title: string;
@@ -46,5 +47,9 @@ const Title = styled.h1<IsDarkMode>`
     animation: ${({ theme, isDarkMode }) => blinking(theme, isDarkMode)} 0.8s
       linear infinite;
     z-index: 1;
+  }
+
+  ${media.sm} {
+    padding-left: 0;
   }
 `;

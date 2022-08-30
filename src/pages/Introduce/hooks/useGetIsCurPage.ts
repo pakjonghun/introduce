@@ -19,11 +19,8 @@ function useGetIsCurPage(page: number) {
       scrollDirection,
     });
 
-    console.log(curPage);
-
     if (curPage) setCurPage(curPage);
   }, [scrollTop]);
-
   return curPage === page;
 }
 

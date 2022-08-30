@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Post } from "../../../../interfaces/post";
+import { media } from "../../../../styles/media";
 import PostCategory from "./PostCategory";
 
 interface PostProps {
@@ -24,7 +25,7 @@ const PostItem: React.FC<PostProps> = ({ post }) => {
 export default PostItem;
 
 const Container = styled.div`
-  width: 35rem;
+  width: 36rem;
   padding: 1.5rem;
   font-size: 1.3rem;
   background-color: #fff;
@@ -41,6 +42,14 @@ const Container = styled.div`
   &:active {
     transform: translateY(-3px) scale(1);
     box-shadow: ${({ theme }) => theme.shadows.light};
+  }
+
+  ${media.xl} {
+    width: 32rem;
+  }
+
+  ${media.lg} {
+    width: 30rem;
   }
 `;
 

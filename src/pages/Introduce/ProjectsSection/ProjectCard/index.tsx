@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { fadeInAndRotateByAngle } from "../../../../styles/animation";
+import { media } from "../../../../styles/media";
 import { PAGE_TWO_TITLE } from "../../../../texture/constants";
 import useGetIsCurPage from "../../hooks/useGetIsCurPage";
 
@@ -44,8 +45,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <CreatedAt>{createdAt} 만듬</CreatedAt>
           <Desc>{desc}</Desc>
           <LinkList>
-            <Link href={url}>배포 링크</Link>
-            <Link href={gitRepo}>깃허브 저장소</Link>
+            <Link href={url}>배포</Link>
+            <Link href={gitRepo}>깃허브</Link>
           </LinkList>
         </ProjectInfo>
       </Wrapper>
@@ -79,6 +80,16 @@ const Container = styled.div<ProjectNum>`
       transform: rotate(${rotate});
     `;
   }}
+
+  ${media.sm} {
+    width: 30rem;
+  }
+
+  ${media.xs} {
+    transform: rotate(0);
+    grid-column: 1/-1;
+    width: 30rem;
+  }
 `;
 
 const Wrapper = styled.div`

@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { media } from "./media";
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -12,11 +13,30 @@ export const GlobalStyles = createGlobalStyle`
 html{
   font-size:62.5% ;
   scroll-behavior: smooth;
+
+  ${media.xl}{
+    font-size:56%;
+  }
+
+  ${media.lg}{
+    font-size:50%;
+  }
+
+  ${media.md}{
+    font-size:44%;
+  }
+
+  ${media.sm}{
+    font-size:38%;
+  }
+  
+  ${media.xs}{
+    font-size:35% ;
+  }
   
 }
 
 body{
-  min-height:100vh;
   box-sizing:border-box ;
   line-height:1.6 ;
   font-size:${({ theme }) => theme.sizes.defaultFont} ;
@@ -27,6 +47,31 @@ body{
   }
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+
+  ${media.sm} {
+    &::-webkit-scrollbar {
+      display: block;
+  }
+
+  &::-webkit-scrollbar {
+  width: 10px;  /* 세로축 스크롤바 길이 */
+  height: 20px;  /* 가로축 스크롤바 길이 */
+}
+&::-webkit-scrollbar-track {
+  background-color: lightblue;
+}
+&::-webkit-scrollbar-track-piece {
+  background-color: gray;
+}
+&::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: black;
+}
+
+  
+  -ms-overflow-style: scrollbar;  /* IE and Edge */
+  scrollbar-width:10px;  /* Firefox */
+  }
 }
 
 input{

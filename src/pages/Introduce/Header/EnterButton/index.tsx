@@ -4,6 +4,7 @@ import useGetPageSwitchFunc from "../../hooks/useGetPageSwitchFunc";
 import { bottomFadeIn } from "../../../../styles/animation";
 import { baseBoxHover } from "../../../../styles/typography";
 import { INTRODUCE_TEXT, TIL_ENTER_TEXT } from "../../../../texture/constants";
+import { media } from "../../../../styles/media";
 
 const EnterButtons = () => {
   const onIntroduceClick = useGetPageSwitchFunc();
@@ -28,13 +29,17 @@ const ButtonList = styled.div`
   & > *:not(:last-child) {
     margin-right: 5rem;
   }
+
+  ${media.sm} {
+    margin-top: 8rem;
+  }
 `;
 
 const EnterButton = styled.button`
   position: relative;
   padding: 0 0 0 0;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 2rem;
   letter-spacing: 1px;
   border: none;
   outline: none;
@@ -65,6 +70,10 @@ const EnterButton = styled.button`
   &:hover {
     color: ${({ theme }) => theme.colors.grayLight1};
     ${baseBoxHover}
+  }
+
+  ${media.sm} {
+    font-size: 2.5rem;
   }
 `;
 

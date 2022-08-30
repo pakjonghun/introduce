@@ -2,6 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import SectionLayout from "../../../components/SectionLayout";
 import { rightFadeIn } from "../../../styles/animation";
+import { media } from "../../../styles/media";
 import { PAGE_TWO_TITLE } from "../../../texture/constants";
 import useGetIsCurPage from "../hooks/useGetIsCurPage";
 import ProjectCard from "./ProjectCard";
@@ -15,7 +16,7 @@ const ProjectsSection = () => {
       <SectionBody>
         <ProjectDesc
           topText='백엔드 개발자와 원활히 소통하기 위해'
-          bottomText='필요한 API기능을 만들어 보았습니다. 초과근무관리'
+          bottomText='필요한 API기능을 추가한 초과근무관리'
           projectNum={1}
         />
         <ProjectDesc
@@ -24,7 +25,7 @@ const ProjectsSection = () => {
           projectNum={2}
         />
         <ProjectDesc
-          topText='원하는 여행지를 찾는 프로젝트 입니다.'
+          topText='원하는 여행지를 찾는'
           bottomText='Today Trip 프로젝트'
           projectNum={3}
         />
@@ -74,14 +75,26 @@ interface IsAniShow {
 const SectionBody = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, min-content) 1fr;
-  grid-row-gap: 4.5rem;
+  grid-template-rows: repeat(3, min-content) 20rem;
+  align-content: center;
+  grid-row-gap: 8rem;
+  letter-spacing: 0px;
+  ${media.xs} {
+    position: relative;
+    top: -20rem;
+    align-content: center;
+    grid-template-columns: 1fr;
+  }
 `;
 
 const CardContainer = styled.div`
   position: relative;
   grid-row: 4/5;
   grid-column: 1/-1;
+
+  ${media.sm} {
+    grid-row: 5/6;
+  }
 `;
 
 const ProjectCardList = styled.div<IsAniShow>`
@@ -102,4 +115,15 @@ const ProjectCardList = styled.div<IsAniShow>`
       `;
     }
   }}
+
+  ${media.sm} {
+    grid-row-gap: 7rem;
+  }
+
+  ${media.xs} {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-row-gap: 8rem;
+    top: 45%;
+  }
 `;

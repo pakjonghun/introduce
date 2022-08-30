@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { media } from "../../../../styles/media";
 
 const HeaderHeading = () => {
   return (
@@ -24,7 +25,7 @@ const HeadingSub = styled.span`
   position: relative;
   margin-left: 4rem;
   margin-bottom: 3rem;
-  font-size: 1.3rem;
+  font-size: 2rem;
   letter-spacing: 1px;
 
   &:before {
@@ -37,6 +38,18 @@ const HeadingSub = styled.span`
     height: 2.5rem;
     background: linear-gradient(to right, #000 0%, #000 50%, blue 50%);
   }
+
+  ${media.md} {
+    font-size: 2.5rem;
+  }
+
+  ${media.sm} {
+    margin-bottom: 5rem;
+  }
 `;
 
-const HeadingDesc = styled.p``;
+const HeadingDesc = styled.p`
+  ${media.sm} {
+    margin-bottom: 2rem;
+  }
+`;

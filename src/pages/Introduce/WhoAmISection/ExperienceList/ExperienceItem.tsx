@@ -2,6 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import useGetCountingNumber from "../../../../hooks/useGetCountingNumber";
 import { scaleUp } from "../../../../styles/animation";
+import { media } from "../../../../styles/media";
 import { easeOutQuad } from "../../../../utils/styleFunctions";
 import useGetIsCurPage from "../../hooks/useGetIsCurPage";
 
@@ -80,6 +81,10 @@ const Count = styled.span<EndNumber>`
 const Desc = styled.p<EndNumber>`
   font-size: 1rem;
   font-weight: 400;
+
+  ${media.sm} {
+    letter-spacing: -1px;
+  }
 `;
 
 const Wrapper = styled.div`

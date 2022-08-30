@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import { media } from "../../../../styles/media";
 
 interface ProjectDescProps {
   topText: string;
@@ -40,9 +41,18 @@ const Container = styled.div<ProjectNumProp>`
       grid-column: ${projectNum} / span 2;
     `;
   }};
+
+  ${media.sm} {
+    grid-column: 1/-1;
+    justify-self: center;
+    font-size: 3rem;
+    text-align: center;
+  }
 `;
 
 const Desc = styled.p`
+  position: relative;
   color: ${({ theme }) => theme.colors.grayLight1};
   font-weight: 400;
+  z-index: 10;
 `;

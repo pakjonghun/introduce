@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { media } from "../../../../styles/media";
 import ExperienceItem from "./ExperienceItem";
 
 const Experience = () => {
@@ -25,6 +26,10 @@ const Container = styled.div`
   grid-gap: 5rem;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: min-content min-content repeat(6, min-content);
+
+  ${media.sm} {
+    grid-template-rows: repeat(4, min-content);
+  }
 `;
 
 const Text = styled.span`
@@ -33,19 +38,38 @@ const Text = styled.span`
   font-size: 3rem;
   justify-self: right;
   margin-top: 3rem;
+
+  ${media.sm} {
+    justify-self: center;
+  }
 `;
 
 const ProjectExp = styled(ExperienceItem)`
   grid-column: 1/2;
   grid-row: 2/3;
   justify-self: end;
-  align-self: end;
+  align-self: start;
+
+  ${media.sm} {
+    align-self: end;
+    justify-self: end;
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
 `;
 
 const TILExp = styled(ExperienceItem)`
   grid-column: 2/3;
-  grid-row: 2/6;
+  grid-row: 2/3;
   align-self: end;
+
+  ${media.sm} {
+    ${media.sm} {
+      justify-self: center;
+      grid-column: 2/3;
+      grid-row: 3/5;
+    }
+  }
 `;
 
 const InteonExp = styled(ExperienceItem)`
@@ -55,4 +79,8 @@ const InteonExp = styled(ExperienceItem)`
   align-self: center;
   color: ${({ theme }) => theme.colors.grayLight1};
   background-color: ${({ theme }) => theme.colors.grayDark3};
+
+  ${media.sm} {
+    justify-self: center;
+  }
 `;
