@@ -60,3 +60,55 @@ export const getSvgIcon = ({
     }
   `;
 };
+
+interface TextInputWithIcon {
+  color: string;
+  focusColor: string;
+}
+
+export const baseTextInput = ({ color, focusColor }: TextInputWithIcon) => css`
+  border: 1px solid ${color};
+  outline: 1px solid transparent;
+  border-radius: ${({ theme }) => theme.values.baseRadius};
+  transition: 0.2s;
+
+  &:focus {
+    border-color: ${focusColor};
+    outline: 1px solid ${focusColor};
+    box-shadow: ${({ theme }) => theme.shadows.light};
+  }
+
+  &::-webkit-input-placeholder {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: ${color};
+  }
+`;
+
+interface ColorChangeHover {
+  initColor: string;
+  changeColor: string;
+  initBgColor: string;
+  changeBgColor: string;
+}
+
+export const buttonHover = ({
+  initColor,
+  changeColor,
+  initBgColor,
+  changeBgColor,
+}: ColorChangeHover) => {
+  return css`
+    color: ${initColor};
+    background-color: ${initBgColor};
+    &:hover {
+      box-shadow: ${({ theme }) => theme.shadows.medium};
+      transform: translateY(-3px);
+    }
+
+    &:active {
+      box-shadow: ${({ theme }) => theme.shadows.light};
+      transform: translateY(-1px);
+    }
+  `;
+};

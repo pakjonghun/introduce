@@ -20,6 +20,11 @@ export const categoryState = atom({
   default: "",
 });
 
+export const isCategoryOpenState = atom({
+  key: "isCategoryOpenState",
+  default: false,
+});
+
 export const isSearchingState = atom({
   key: "isSearchingState",
   default: false,
@@ -28,4 +33,19 @@ export const isSearchingState = atom({
 export const isSearchLoadingState = atom({
   key: "isSearchLoadingState",
   default: false,
+});
+
+export const selectedTagsState = atom<string[]>({
+  key: "selectedTagsState",
+  default: [],
+});
+
+export const isSortOpenState = atom({
+  key: "isSortOpenState",
+  default: false,
+});
+
+export const sortState = atom<[string, boolean]>({
+  key: "sortState",
+  default: ["", false],
 });

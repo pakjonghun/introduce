@@ -1,6 +1,5 @@
 import React from "react";
 import { useRecoilValueLoadable } from "recoil";
-import styled from "styled-components";
 import LoadingSpinner from "../../../components/LoadingSpinner";
 import { getPostListsQuery } from "../../../recoil/postlist/selector";
 import PostLists from "./PostLists";
@@ -10,8 +9,7 @@ const PostListBody = () => {
 
   switch (postLists.state) {
     case "loading":
-      <LoadingSpinner />;
-      break;
+      return <LoadingSpinner />;
 
     case "hasValue":
       return (
@@ -25,10 +23,6 @@ const PostListBody = () => {
     default:
       throw new Error("error on postListBody");
   }
-
-  return <Container></Container>;
 };
 
 export default PostListBody;
-
-const Container = styled.div``;

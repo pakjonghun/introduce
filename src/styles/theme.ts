@@ -1,5 +1,8 @@
 import { DefaultTheme } from "styled-components";
 export const theme: DefaultTheme = {
+  values: {
+    baseRadius: "5px",
+  },
   sizes: {
     defaultFont: "1.6rem",
   },
@@ -9,7 +12,7 @@ export const theme: DefaultTheme = {
   },
   shadows: {
     light: "0 0.5rem 1.5rem rgba(0, 0, 0, 0.05)",
-    medium: "0 1rem 3rem rgba(0, 0, 0, 0.2)",
+    medium: "0 1rem 3rem rgba(0, 0, 0, 0.1)",
     hard: "0 1rem 3rem rgba(0, 0, 0, 0.3)",
   },
   colors: {

@@ -2,6 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import MainLayout from "../../components/MainLayout";
 import PostListBody from "./PostListBody";
+import Filter from "./PostListBody/Filter";
 import PostListHeader from "./PostListHeader";
 
 const PostList = () => {
@@ -10,6 +11,7 @@ const PostList = () => {
       <Container>
         <Wrapper>
           <PostListHeader />
+          <Filter />
           <PostListBody />
         </Wrapper>
       </Container>
@@ -25,8 +27,6 @@ const Container = styled.div`
   justify-content: center;
   height: 100vh;
   padding-top: 5rem;
-  overflow: hidden;
-
   ${({ theme }) =>
     css`
       background: linear-gradient(
@@ -34,13 +34,13 @@ const Container = styled.div`
         ${theme.colors.primaryLight},
         ${theme.colors.primary}
       );
-    `}
+    `};
 `;
 
 const Wrapper = styled.div`
+  position: relative;
   height: 80%;
   width: 80%;
-  padding: 1.5rem 2rem;
   outline: 2px solid ${({ theme }) => theme.colors.grayLight1};
   outline-offset: 1.5rem;
   border-radius: 10px;
