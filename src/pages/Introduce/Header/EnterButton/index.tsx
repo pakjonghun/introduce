@@ -10,7 +10,7 @@ const EnterButtons = () => {
   const onIntroduceClick = useGetPageSwitchFunc();
   return (
     <ButtonList>
-      <EnterButton>{TIL_ENTER_TEXT}</EnterButton>
+      <EnterButton href='/posts'>{TIL_ENTER_TEXT}</EnterButton>
       <EnterIntroduce onClick={onIntroduceClick}>
         {INTRODUCE_TEXT}
       </EnterIntroduce>
@@ -35,7 +35,7 @@ const ButtonList = styled.div`
   }
 `;
 
-const EnterButton = styled.button`
+const EnterButton = styled.a`
   position: relative;
   padding: 0 0 0 0;
   font-weight: 700;

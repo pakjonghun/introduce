@@ -42,19 +42,13 @@ const Container = styled.nav<IsShowNav>`
   transform: translateX(-50%);
   display: flex;
   justify-content: space-between;
-  max-width: 130rem;
   width: 100%;
-  margin-left: 7rem;
   padding: 2rem 3rem 2rem 9rem;
   background-color: ${({ theme }) => theme.colors.secondaryLight};
   border-bottom: 1px solid ${({ theme }) => theme.colors.primaryLight};
   opacity: ${({ isShowNav }) => (isShowNav ? 1 : 0)};
   z-index: 10;
   transition: 0.2s;
-
-  ${media.sm} {
-    margin-left: 0;
-  }
 `;
 
 const PageMark = styled.a`
