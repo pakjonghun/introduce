@@ -39,7 +39,6 @@ const ScrollIndicator = () => {
         scrollDirection,
       });
       if (curPage) {
-        console.log(curPage);
         setScrollBarPosition(
           wrapperRef.current.clientHeight * (curPage - 1) * 0.25
         );
@@ -103,6 +102,7 @@ const Wrapper = styled.ul<ScrollBarPosition>`
     width: 100%;
     height: calc(100% / 4);
     z-index: 5;
+    transition: 0.1s;
   }
 `;
 

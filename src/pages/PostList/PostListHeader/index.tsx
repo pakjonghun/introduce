@@ -1,64 +1,83 @@
-import React, { useCallback } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import React, { useCallback, useEffect, useState } from "react";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import styled, { css } from "styled-components";
 import useGetCountingNumber from "../../../hooks/useGetCountingNumber";
 import {
-  isSearchingState,
+  isFilterOpenState,
   isSearchLoadingState,
   postListCountState,
   searchTermState,
+  selectedTagsState,
+  sortState,
 } from "../../../recoil/postlist/atom";
 import { baseTextInput, getSvgIcon } from "../../../styles/typography";
 import { spinAndScale } from "../../../styles/animation";
+import { IsLoading, IsSearching } from "./interfaces";
 
 const PostListHeader = () => {
   const searchPostCount = useRecoilValue(postListCountState);
   const isSearchLoading = useRecoilValue(isSearchLoadingState);
   const [searchTerm, setSearchTerm] = useRecoilState(searchTermState);
+  const setIsFilterOpen = useSetRecoilState(isFilterOpenState);
+  const tag = useRecoilValue(selectedTagsState);
+  const [key, value] = useRecoilValue(sortState);
+  const [tempTerm, setTempTerm] = useState("");
 
-  const [isSearching, setS] = useRecoilState(isSearchingState);
+  const isSearching =
+    Boolean(searchTerm) ||
+    Boolean(tag.length) ||
+    (Boolean(key) && Boolean(value));
+
   const resultCount = useGetCountingNumber({
     endNumber: searchPostCount,
-    duration: 3000,
+    duration: 2000,
     startNumber: 0,
-    isAniStart: isSearching,
+    isAniStart: !isSearchLoading,
   });
+  const onFilterClick = useCallback(() => {
+    setIsFilterOpen((pre) => !pre);
+  }, [setIsFilterOpen]);
 
-  const onSearchInputChange = useCallback(
-    (value: string) => {
-      setSearchTerm(value);
-    },
-    [setSearchTerm]
-  );
+  const onSearchInputChange = useCallback((value: string) => {
+    setTempTerm(value);
+  }, []);
+
+  useEffect(() => {
+    let timer: null | NodeJS.Timeout = null;
+
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      setSearchTerm(tempTerm);
+      if (timer) clearTimeout(timer);
+      timer = null;
+    }, 500);
+
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [tempTerm, setSearchTerm]);
 
   return (
     <Container>
       <OriginTitle isSearching={isSearching}>Today I Learn</OriginTitle>
       <SearchingTitle isSearching={isSearching}>
-        {resultCount} Posts Found
+        <Count>{resultCount}</Count> Posts Found
         <LoadingSpinner isLoading={isSearchLoading}>loading</LoadingSpinner>
       </SearchingTitle>
       <SearchGroup>
         <SearchInput
-          value={searchTerm}
+          value={tempTerm}
           onChange={(event) => onSearchInputChange(event.target.value)}
           placeholder='Search'
         />
         <SearchIcon />
+        <FilterIcon onClick={onFilterClick} />
       </SearchGroup>
     </Container>
   );
 };
 
 export default PostListHeader;
-
-interface IsSearching {
-  isSearching: boolean;
-}
-
-interface IsLoading {
-  isLoading: boolean;
-}
 
 const Container = styled.header`
   position: sticky;
@@ -100,18 +119,29 @@ const OriginTitle = styled(CommonTitle)`
   `}
 `;
 
+const Count = styled.span`
+  justify-self: right;
+`;
+
 const SearchingTitle = styled(CommonTitle)`
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-gap: 1rem;
+  width: 28rem;
   ${({ isSearching }) => css`
     transform: translate(${isSearching ? "0,-50%" : "-50rem,-50%"});
   `}
 `;
 
 const LoadingSpinner = styled.div<IsLoading>`
+  position: absolute;
+  right: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  visibility: ${({ isLoading }) => (isLoading ? "visible" : "hidden")};
   opacity: ${({ isLoading }) => (isLoading ? 1 : 0)};
   margin-left: 2rem;
-  animation: ${spinAndScale} 4s linear infinite forwards;
+  animation: ${spinAndScale} 4s linear infinite;
   ${({ theme }) =>
     getSvgIcon({
       width: 2,
@@ -160,4 +190,28 @@ const SearchInput = styled.input`
   &:focus + span {
     color: ${({ theme }) => theme.colors.primary};
   }
+`;
+
+const FilterIcon = styled.div`
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    transform: scale(1.1) translateY(-50%);
+    box-shadow: ${({ theme }) => theme.shadows.medium};
+  }
+  &:active {
+    transform: scale(1) translateY(-50%);
+  }
+
+  ${getSvgIcon({
+    color: "currentColor",
+    width: 2,
+    height: 2,
+    iconName: "filter_list",
+  })}
 `;

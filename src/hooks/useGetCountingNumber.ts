@@ -34,6 +34,10 @@ const useGetCountingNumber = ({
       setNumber(currentNumber);
       if (percent === 1) clearInterval(timer);
     }, 1000 / frame);
+
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
   }, [startNumber, endNumber, totalFrameCount, duration, isAniStart]);
 
   return number;

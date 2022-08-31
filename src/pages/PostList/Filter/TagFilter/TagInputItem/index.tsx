@@ -1,26 +1,29 @@
 import React from "react";
 import styled from "styled-components";
 
-interface InpugGroupProp {
-  tag: string;
+interface TagInputItemProps {
+  tagName: string;
   onChangeTag: (value: string) => void;
 }
 
-const InpugGroup: React.FC<InpugGroupProp> = ({ tag, onChangeTag }) => {
+const TagInputItem: React.FC<TagInputItemProps> = ({
+  tagName,
+  onChangeTag,
+}) => {
   return (
     <Container>
       <Input
         onChange={(event) => onChangeTag(event.target.value)}
-        value={tag}
+        value={tagName}
         type='checkbox'
-        id={tag}
+        id={tagName}
       />
-      <Label htmlFor={tag}>{tag}</Label>
+      <Label htmlFor={tagName}>{tagName}</Label>
     </Container>
   );
 };
 
-export default InpugGroup;
+export default TagInputItem;
 
 const Container = styled.div`
   flex: 1;
@@ -50,6 +53,7 @@ const Label = styled.label`
   outline: 1px solid transparent;
   color: ${({ theme }) => theme.colors.secondary};
   border-radius: ${({ theme }) => theme.values.baseRadius};
+  white-space: nowrap;
 
   &:hover {
     color: ${({ theme }) => theme.colors.primary};

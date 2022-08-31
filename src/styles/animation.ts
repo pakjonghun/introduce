@@ -128,23 +128,23 @@ export const scaleUp = (isAniStart: boolean) => {
 
 export const spinAndScale = keyframes`
   0%{
-    transform:rotate(0) scale(.9);
+    transform:  translateY(-50%) scale(.9) rotate(0) ;
   }
 
   25%{
-    transform:rotate(90deg) scale(1.2);
+    transform:  translateY(-50%) scale(1.1) rotate(90deg) ;
   }
 
   50%{
-    transform:rotate(180deg) scale(.9);
+    transform:  translateY(-50%) scale(.9) rotate(180deg) ;
   }
 
   75%{
-    transform:rotate(270deg) scale(1.2);
+    transform:translateY(-50%) scale(1.1) rotate(270deg) ;
   }
 
   100%{
-    transform:rotate(360deg) scale(.9);
+    transform: translateY(-50%) scale(.9) rotate(360deg);
   }
 
 `;

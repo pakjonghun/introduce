@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Post } from "../../../../interfaces/post";
 import { media } from "../../../../styles/media";
+import VirtualizedItem from "../PostListBody/PostList/VirtualizeItem";
 import PostCategory from "./PostCategory";
 
 interface PostProps {
@@ -9,23 +10,29 @@ interface PostProps {
 }
 
 const PostItem: React.FC<PostProps> = ({ post }) => {
-  console.log(post.head);
   return (
-    <Container>
-      <PostInfo>
-        <Title>{post.id.replace(".md", "")}</Title>
-        <Date>{post.head.date?.slice(0, 10)}</Date>
-      </PostInfo>
-      <Content>{post.body.slice(0, 150)}</Content>
-      <PostCategory categoryList={post.head.category?.split(",") || []} />
-    </Container>
+    <VirtualizedItem height={160} key={post.id}>
+      <Container>
+        <PostInfo>
+          <Title>
+            {post.id.replace(".md", "").split("-").pop()?.toUpperCase()}
+          </Title>
+          <Date>{post.head.date?.slice(0, 10)}</Date>
+        </PostInfo>
+        <Content>{post.body.slice(0, 400)}</Content>
+        <PostCategory categoryList={post.head.category?.split(",") || []} />
+      </Container>
+    </VirtualizedItem>
   );
 };
-
 export default PostItem;
 
 const Container = styled.div`
-  width: 36rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 34rem;
+  height: 30rem;
   padding: 1.5rem;
   font-size: 1.3rem;
   background-color: #fff;
@@ -49,7 +56,7 @@ const Container = styled.div`
   }
 
   ${media.lg} {
-    width: 30rem;
+    width: auto;
   }
 `;
 
@@ -62,6 +69,7 @@ const PostInfo = styled.div`
 
 const Content = styled.div`
   position: relative;
+  height: 16rem;
   margin: 1.5rem 0 1rem 0;
   padding: 1rem 1.2rem;
   font-size: 1.5rem;
@@ -69,7 +77,7 @@ const Content = styled.div`
   color: ${({ theme }) => theme.colors.grayDark2};
   border-radius: 5px;
   box-shadow: ${({ theme }) => theme.shadows.light};
-  overflow: hidden;
+  overflow-y: auto;
   z-index: 1;
 
   &::before {
@@ -94,8 +102,3 @@ const Title = styled.h3`
 const Date = styled.p`
   color: ${({ theme }) => theme.colors.grayDark3};
 `;
-
-const Desc = styled.p``;
-
-const CategoryList = styled.p``;
-const CategoryItem = styled.p``;

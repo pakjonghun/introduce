@@ -48,6 +48,7 @@ const EnterButton = styled.a`
   color: ${({ theme }) => theme.colors.grayDark3};
   background-color: transparent;
   transition: 0.2s;
+  cursor: pointer;
   z-index: 1;
 
   &::before {
@@ -57,7 +58,7 @@ const EnterButton = styled.a`
     left: 50%;
     transform: translate(-50%, -50%);
     width: 130%;
-    height: 200%;
+    height: 150%;
     border-radius: 0.3rem;
     transition: 0.2s;
     z-index: -1;
@@ -73,7 +74,7 @@ const EnterButton = styled.a`
   }
 
   ${media.sm} {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
   }
 `;
 

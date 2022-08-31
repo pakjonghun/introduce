@@ -10,7 +10,7 @@ import ProjectsSection from "./ProjectsSection";
 import Footer from "./Footer";
 
 const Introduce = () => {
-  // useSetScrollTopAndDirection();
+  useSetScrollTopAndDirection();
   useSetIsSwitchingPageFalse();
 
   return (

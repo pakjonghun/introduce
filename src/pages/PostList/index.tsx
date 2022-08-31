@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import MainLayout from "../../components/MainLayout";
 import PostListBody from "./PostListBody";
-import Filter from "./PostListBody/Filter";
+import Filter from "./Filter";
 import PostListHeader from "./PostListHeader";
 
 const PostList = () => {
@@ -45,5 +45,5 @@ const Wrapper = styled.div`
   outline-offset: 1.5rem;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.secondaryLight};
-  overflow: hidden;
+  overflow-y: auto;
 `;

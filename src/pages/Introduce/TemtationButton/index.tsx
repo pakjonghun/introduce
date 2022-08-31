@@ -21,7 +21,7 @@ const TemtationButton = () => {
     <DownArrow
       isDarkMode={curPage === 3}
       onClick={onDownButtonClick}
-      isShow={isButtonShow}
+      isShow={isButtonShow && curPage !== 4}
     />
   );
 };

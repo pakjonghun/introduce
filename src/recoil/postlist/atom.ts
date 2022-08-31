@@ -1,5 +1,10 @@
 import { atom } from "recoil";
 
+export const isFilterOpenState = atom({
+  key: "isFilterOpenState",
+  default: false,
+});
+
 export const postListCountState = atom({
   key: "postListCountState",
   default: 0,
@@ -13,21 +18,6 @@ export const pageState = atom({
 export const searchTermState = atom({
   key: "searchTermState",
   default: "",
-});
-
-export const categoryState = atom({
-  key: "categoryState",
-  default: "",
-});
-
-export const isCategoryOpenState = atom({
-  key: "isCategoryOpenState",
-  default: false,
-});
-
-export const isSearchingState = atom({
-  key: "isSearchingState",
-  default: false,
 });
 
 export const isSearchLoadingState = atom({
@@ -45,7 +35,7 @@ export const isSortOpenState = atom({
   default: false,
 });
 
-export const sortState = atom<[string, boolean]>({
+export const sortState = atom<[string, string]>({
   key: "sortState",
-  default: ["", false],
+  default: ["", ""],
 });

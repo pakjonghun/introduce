@@ -2,7 +2,7 @@ import React from "react";
 import { useRecoilValueLoadable } from "recoil";
 import LoadingSpinner from "../../../components/LoadingSpinner";
 import { getPostListsQuery } from "../../../recoil/postlist/selector";
-import PostLists from "./PostLists";
+import PostList from "./PostListBody";
 
 const PostListBody = () => {
   const postLists = useRecoilValueLoadable(getPostListsQuery);
@@ -15,7 +15,11 @@ const PostListBody = () => {
       return (
         <>
           {postLists.contents.map((loadablePostLists, idx) => (
-            <PostLists key={idx} loadablePostLists={loadablePostLists} />
+            <PostList
+              idx={idx}
+              key={idx}
+              loadablePostLists={loadablePostLists}
+            />
           ))}
         </>
       );

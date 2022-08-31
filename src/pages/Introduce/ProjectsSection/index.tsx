@@ -9,7 +9,8 @@ import ProjectCard from "./ProjectCard";
 import ProjectDesc from "./ProjectDesc";
 
 const ProjectsSection = () => {
-  const isCurpage = useGetIsCurPage(3);
+  const isProjectPage = useGetIsCurPage(3);
+  const isFooter = useGetIsCurPage(4);
 
   return (
     <SectionLayout isDarkMode={true} title={PAGE_TWO_TITLE} page={3}>
@@ -31,7 +32,7 @@ const ProjectsSection = () => {
         />
 
         <CardContainer>
-          <ProjectCardList isAniShow={isCurpage}>
+          <ProjectCardList isAniShow={isProjectPage || isFooter}>
             <ProjectCard
               projectNum={1}
               img='https://imagedelivery.net/0ZP-N9B45ji28JoChYUvWw/e7fff0e1-9c1a-45cb-19b9-89e59b54b500/projectCard'
