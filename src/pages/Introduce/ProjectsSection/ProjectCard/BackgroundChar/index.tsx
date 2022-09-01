@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { fadeInAndRotateByAngle } from "../../../../../styles/animation";
+import { fadeInAndRotateByAngle, test } from "../../../../../styles/animation";
 import { PAGE_TWO_TITLE } from "../../../../../constant/constants";
 import useGetIsCurPage from "../../../hooks/useGetIsCurPage";
 import { CharProp } from "./interface";
@@ -16,13 +16,14 @@ const BackgroundChar: React.FC<BackgroundCharProp> = ({ projectNum }) => {
   );
 
   const isCurPage = useGetIsCurPage(3);
+  const isFooter = useGetIsCurPage(4);
 
   return (
     <>
-      <LeftChar isAniShow={isCurPage} projectNum={projectNum}>
+      <LeftChar isAniShow={isCurPage || isFooter} projectNum={projectNum}>
         {charList[0].toUpperCase()}
       </LeftChar>
-      <RightChar isAniShow={isCurPage} projectNum={projectNum}>
+      <RightChar isAniShow={isCurPage || isFooter} projectNum={projectNum}>
         {charList[1].toUpperCase()}
       </RightChar>
     </>
@@ -55,7 +56,7 @@ const LeftChar = styled.span<CharProp>`
       return css`
         top: ${top};
         left: ${left};
-        animation: ${fadeInAndRotateByAngle("370deg")} 1s 1s forwards;
+        animation: ${fadeInAndRotateByAngle("380deg")} 1s 1s linear backwards;
       `;
     } else {
       return css`
@@ -81,20 +82,20 @@ const RightChar = styled.span<CharProp>`
     }
 
     if (projectNum === 2) {
-      bottom = "-6rem";
-      right = "-0rem";
+      bottom = "-9rem";
+      right = "1rem";
     }
 
     if (projectNum === 3) {
       bottom = "-3rem";
-      right = "-3rem";
+      right = "-4rem";
     }
 
     if (isAniShow) {
       return css`
         bottom: ${bottom};
         right: ${right};
-        animation: ${fadeInAndRotateByAngle("-380deg")} 1s 1s forwards;
+        animation: ${fadeInAndRotateByAngle("380deg")} 1s 1s linear backwards;
       `;
     } else {
       return css`

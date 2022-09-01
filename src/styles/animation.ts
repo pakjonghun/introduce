@@ -24,6 +24,18 @@ export const rightFadeIn = keyframes`
   }
 `;
 
+export const test = (angle: string) => keyframes`
+  0%{
+    opacity:0 ;
+    transform:scale(0) rotate(0) ;
+  }
+
+  100%{
+    opacity:1 ;
+    transform:scale(1) rotate(${angle});
+  }
+`;
+
 export const fadeInAndRotateByAngle = (angle: string) => keyframes`
   0%{
     opacity:0 ;

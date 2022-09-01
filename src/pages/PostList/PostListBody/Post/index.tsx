@@ -24,7 +24,6 @@ const PostItem: React.FC<PostProps> = ({ post }) => {
           className='postDetail'
           dangerouslySetInnerHTML={{ __html: `${body}...` }}
         />
-        ;
         <PostCategory categoryList={post.head.category?.split(",") || []} />
       </Container>
     </VirtualizedItem>
@@ -49,6 +48,10 @@ const Container = styled.a`
   &:hover {
     transform: translateY(-5px) scale(1.01);
     box-shadow: ${({ theme }) => theme.shadows.medium};
+  }
+
+  &:hover .postDetail {
+    overflow-y: auto;
   }
 
   &:active {
@@ -76,7 +79,7 @@ const Content = styled.div`
   color: ${({ theme }) => theme.colors.grayDark2};
   border-radius: 5px;
   box-shadow: ${({ theme }) => theme.shadows.light};
-  overflow-y: auto;
+  overflow: hidden;
   z-index: 1;
 
   &::before {

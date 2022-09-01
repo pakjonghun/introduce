@@ -134,7 +134,7 @@ a{
     height:50;
     width:95%;
     padding:3rem 4rem;
-    margin-left:3rem;
+    margin:1rem 0 1rem 3rem;
     background-color:${({ theme }) => theme.colors.grayDark3} ;
     border-radius:10px ;
     box-shadow:${({ theme }) => theme.shadows.medium} ;
