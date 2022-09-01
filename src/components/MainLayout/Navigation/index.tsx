@@ -21,7 +21,7 @@ const Navigation: React.FC<NavigationProp> = ({ canBack }) => {
 
   return (
     <Container isShowNav={pathname === "/posts" || isShowNav}>
-      <BackButton onClick={onBackClick}>&larr;</BackButton>
+      {canBack && <BackButton onClick={onBackClick}>&larr;</BackButton>}
       <PageMark href='/'>whoami</PageMark>
       <MenuList pathname={pathname} />
     </Container>
