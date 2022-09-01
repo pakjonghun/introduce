@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { fadeInAndRotateByAngle, test } from "../../../../../styles/animation";
+import { fadeInAndRotateByAngle } from "../../../../../styles/animation";
 import { PAGE_TWO_TITLE } from "../../../../../constant/constants";
 import useGetIsCurPage from "../../../hooks/useGetIsCurPage";
 import { CharProp } from "./interface";
