@@ -16,7 +16,7 @@ const PostDetail = () => {
       return <Loading />;
     case "hasValue": {
       return (
-        <MainLayout title='PostDetail'>
+        <MainLayout canBack={true} title='PostDetail'>
           <PostDetailBody post={post.contents} />
         </MainLayout>
       );
