@@ -1,4 +1,4 @@
-import { pageState } from "./../../../../../../recoil/postlist/atom";
+import { pageState } from "../../../../../recoil/postlist/atom";
 import { useState, useEffect, useCallback } from "react";
 import { useSetRecoilState } from "recoil";
 

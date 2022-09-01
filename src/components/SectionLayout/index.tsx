@@ -1,11 +1,10 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
 import styled, { css } from "styled-components";
 import useGetIsCurPage from "../../pages/Introduce/hooks/useGetIsCurPage";
 import useGetTypingText from "../../pages/Introduce/hooks/useGetTypingText";
-import { scrollDirectionState } from "../../recoil/Introduce/atom";
 import { media } from "../../styles/media";
 import Border from "../Border";
+import { IsDarkModeProp } from "./interface";
 import SectionTitle from "./SectionTitle";
 
 interface SectionLayoutProps {
@@ -39,10 +38,6 @@ const SectionLayout: React.FC<SectionLayoutProps> = ({
 };
 
 export default SectionLayout;
-
-interface IsDarkModeProp {
-  isDarkMode: boolean;
-}
 
 const Container = styled.section<IsDarkModeProp>`
   display: grid;

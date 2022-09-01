@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Experience from "./ExperienceList";
 import ExperienceDesc from "./ExperienceDesc";
-import { PAGE_ONE_TITLE } from "../../../texture/constants";
+import { PAGE_ONE_TITLE } from "../../../constant/constants";
 import SectionLayout from "../../../components/SectionLayout";
 import { media } from "../../../styles/media";
 

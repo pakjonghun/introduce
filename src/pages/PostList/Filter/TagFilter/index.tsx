@@ -13,7 +13,7 @@ const TagFilter = () => {
     case "hasValue":
       return <TagFilterBody tagNameList={loadableCate.contents} />;
     case "hasError":
-      return <div>error</div>;
+      throw new Error("서버와 통신중 오류가 발생했습니다.");
   }
 };
 

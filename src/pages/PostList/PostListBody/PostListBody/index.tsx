@@ -1,7 +1,6 @@
 import React from "react";
 import { Loadable } from "recoil";
 import { PostListResponse } from "../../../../interfaces/postList";
-import LoadingSpinner from "../../../../components/LoadingSpinner";
 import PostList from "./PostList";
 
 interface PostListProps {
@@ -12,7 +11,7 @@ interface PostListProps {
 const PostListBody: React.FC<PostListProps> = ({ loadablePostLists, idx }) => {
   switch (loadablePostLists.state) {
     case "loading":
-      return <LoadingSpinner />;
+      return null;
 
     case "hasValue":
       return (

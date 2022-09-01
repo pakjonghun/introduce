@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { blinking } from "../../styles/animation";
-import { media } from "../../styles/media";
+import { blinking } from "../../../styles/animation";
+import { media } from "../../../styles/media";
+import { IsDarkModeProp } from "../interface";
 
 interface SectionTitleProps {
   title: string;
@@ -21,14 +22,11 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
 
 export default SectionTitle;
 
-interface IsDarkMode {
-  isDarkMode: boolean;
-}
-
 const Container = styled.div``;
 
-const Title = styled.h1<IsDarkMode>`
+const Title = styled.h1<IsDarkModeProp>`
   position: relative;
+  height: 6.5rem;
   padding-left: 1rem;
   line-height: 1.3;
   letter-spacing: 3px;

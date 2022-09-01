@@ -99,6 +99,58 @@ a{
   color:inherit;
 }
 
+.postDetail{
+  h1,h2,h3{
+    margin:4rem 0 1rem 0 ;
+    letter-spacing:1px ;
+  }
+
+  h1{
+    font-size:3rem ;
+  }
+
+  h2{
+    font-size:2.5rem ;
+  }
+
+  h3{
+    font-size:2.3rem ;
+  }
+
+  ol,ul{
+    padding:0 3rem;
+  }
+
+
+  li{
+    list-style:disc ;
+    font-size:2rem ;
+    &:not(:last-child){
+      margin-bottom:.5rem ;
+    }
+  }
+
+  pre{
+    height:50;
+    width:95%;
+    padding:3rem 4rem;
+    margin-left:3rem;
+    background-color:${({ theme }) => theme.colors.grayDark3} ;
+    border-radius:10px ;
+    box-shadow:${({ theme }) => theme.shadows.medium} ;
+    overflow-y: auto;
+  }
+
+  code{
+    font-size:1.8rem ;
+    color:${({ theme }) => theme.colors.grayLight1};
+    ::selection{
+  background-color:${({ theme }) => theme.colors.grayLight1} ;
+  color:${({ theme }) => theme.colors.grayDark3};
+}
+  }
+}
+
 ::selection{
   background-color:${({ theme }) => theme.colors.primary} ;
   color:#fff;

@@ -1,39 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useCallback } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled, { css } from "styled-components";
-import { media } from "../../../styles/media";
 import { baseGradient, baseMenuHover } from "../../../styles/typography";
-import { INTRODUCE_TEXT, TIL_ENTER_TEXT } from "../../../texture/constants";
 import useGetIsShowNav from "./useGetIsShowNav";
+import MenuList from "./MenuList";
+import { IsShowNav } from "./interface";
 
-const Navigation = () => {
+interface NavigationProp {
+  canBack: boolean;
+}
+
+const Navigation: React.FC<NavigationProp> = ({ canBack }) => {
   const { pathname } = useLocation();
   const isShowNav = useGetIsShowNav();
+  const nav = useNavigate();
+
+  const onBackClick = useCallback(() => {
+    nav(-1);
+  }, [nav]);
 
   return (
     <Container isShowNav={pathname === "/posts" || isShowNav}>
+      <BackButton onClick={onBackClick}>&larr;</BackButton>
       <PageMark href='/'>whoami</PageMark>
-      <RightMenuList>
-        <Menu isSelected={pathname === "/posts"} href='/posts'>
-          {TIL_ENTER_TEXT}
-        </Menu>
-        <Menu isSelected={pathname === "/"} href='/'>
-          {INTRODUCE_TEXT}
-        </Menu>
-      </RightMenuList>
+      <MenuList pathname={pathname} />
     </Container>
   );
 };
 
 export default Navigation;
-
-interface IsShowNav {
-  isShowNav: boolean;
-}
-
-interface IsSelected {
-  isSelected: boolean;
-}
 
 const Container = styled.nav<IsShowNav>`
   position: fixed;
@@ -70,34 +65,26 @@ const PageMark = styled.a`
     `}
 `;
 
-const RightMenuList = styled.div`
-  & > *:not(:last-child) {
-    margin-right: 3rem;
-  }
-`;
-
-const Menu = styled.a<IsSelected>`
-  position: relative;
-  display: inline-block;
-  font-size: 1.4rem;
+const BackButton = styled.a`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  height: 100%;
+  user-select: none;
+  font-weight: 900;
+  left: 3rem;
+  cursor: pointer;
   transition: 0.2s;
-  ${baseMenuHover}
-  ${({ isSelected, theme }) => css`
-    color: ${isSelected ? theme.colors.grayDark3 : "currentColor"};
-    font-weight: ${isSelected ? 700 : 400};
 
-    &::after {
-      content: "";
-      opacity: ${isSelected ? 1 : 0};
-      position: absolute;
-      left: 50%;
-      bottom: -1rem;
-      transform: translateX(-50%);
-      border-radius: 3rem;
-      width: 0.5rem;
-      height: 0.5rem;
-      background-color: ${({ theme }) => theme.colors.grayDark3};
-      transition: 0.2s;
-    }
-  `}
+  &:hover {
+    color: ${({ theme }) => theme.colors.grayDark3};
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  &:active {
+    color: ${({ theme }) => theme.colors.grayDark1};
+    transform: translateY(-50%) scale(1);
+  }
 `;

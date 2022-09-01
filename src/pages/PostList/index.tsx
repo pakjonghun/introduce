@@ -4,8 +4,10 @@ import MainLayout from "../../components/MainLayout";
 import PostListBody from "./PostListBody";
 import Filter from "./Filter";
 import PostListHeader from "./PostListHeader";
+import useSetIsSearchingLoading from "./useSetPageAndLoading";
 
 const PostList = () => {
+  useSetIsSearchingLoading();
   return (
     <MainLayout title='postList'>
       <Container>

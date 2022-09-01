@@ -29,7 +29,7 @@ const Container = styled.div`
 
   ${media.sm} {
     width: 100%;
-    padding: 2rem 3rem;
+    padding: 2rem 1rem;
     font-size: 2.1rem;
     border-bottom: 1px solid ${({ theme }) => theme.colors.grayLight2};
   }

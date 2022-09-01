@@ -11,13 +11,13 @@ interface MainLayoutProps {
   title: string;
   children: React.ReactNode;
   canClickEle?: boolean;
-  isBack?: boolean;
+  canBack?: boolean;
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({
   title,
   children,
-  isBack = false,
+  canBack = false,
 }) => {
   const { pathname } = useLocation();
   const isSwitchingPage = useRecoilValue(isSwitchingPageState);
@@ -29,7 +29,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
     >
       <Wrapper>
         <PageTitle title={title} />
-        <Navigation />
+        <Navigation canBack={canBack} />
         <Main>{children}</Main>
       </Wrapper>
     </Container>

@@ -5,6 +5,7 @@ import { scaleUp } from "../../../../styles/animation";
 import { media } from "../../../../styles/media";
 import { easeOutQuad } from "../../../../utils/styleFunctions";
 import useGetIsCurPage from "../../hooks/useGetIsCurPage";
+import { EndNumber, ExperienceItemStyles } from "./interfaces";
 
 interface ExperienceCountProps {
   endNumber: number;
@@ -42,19 +43,6 @@ const ExperienceItem: React.FC<ExperienceCountProps> = ({
 };
 
 export default ExperienceItem;
-
-interface EndNumber {
-  endNumber: number;
-}
-
-interface ExperienceItemStyles {
-  endNumber: number;
-  isCurPage: boolean;
-  width?: string;
-  height?: string;
-  color?: string;
-  backgroundColor?: string;
-}
 
 const Container = styled.div<ExperienceItemStyles>`
   position: relative;

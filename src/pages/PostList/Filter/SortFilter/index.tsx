@@ -1,8 +1,11 @@
 import React, { useCallback } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import styled, { css } from "styled-components";
-import { isSortOpenState, sortState } from "../../../../recoil/postlist/atom";
-import { media } from "../../../../styles/media";
+import {
+  isSearchLoadingState,
+  isSortOpenState,
+  sortState,
+} from "../../../../recoil/postlist/atom";
 import { getSvgIcon } from "../../../../styles/typography";
 import { IsSortOpen } from "./interfaces";
 import OptionList from "./OptionList";
@@ -36,7 +39,7 @@ export default SortFilter;
 
 const Container = styled.div`
   position: relative;
-  padding: 0 2rem;
+  margin-top: 1rem;
   font-size: 1.2rem;
   z-index: 10;
 `;

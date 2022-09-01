@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { media } from "../../../../styles/media";
+import { ProjectNumProp } from "./interface";
 
 interface ProjectDescProps {
   topText: string;
@@ -22,10 +23,6 @@ const ProjectDesc: React.FC<ProjectDescProps> = ({
 };
 
 export default ProjectDesc;
-
-interface ProjectNumProp {
-  projectNum: number;
-}
 
 const Container = styled.div<ProjectNumProp>`
   ${({ projectNum }) => {

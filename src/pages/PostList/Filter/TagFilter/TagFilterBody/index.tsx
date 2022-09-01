@@ -42,7 +42,6 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   text-align: center;
-  padding: 0 2rem;
 `;
 
 const Title = styled.span`

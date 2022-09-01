@@ -1,6 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import { MAIN_TITLE } from "../../../texture/constants";
+import { MAIN_TITLE } from "../../../constant/constants";
 
 interface PageTitleProps {
   title: string;

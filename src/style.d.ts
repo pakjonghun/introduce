@@ -6,6 +6,7 @@ declare module "styled-components" {
     values: {
       baseRadius: string;
       baseVertical: string;
+      postHeight: string;
     };
     sizes: {
       defaultFont: string;

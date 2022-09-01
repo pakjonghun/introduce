@@ -3,6 +3,7 @@ export const theme: DefaultTheme = {
   values: {
     baseRadius: "5px",
     baseVertical: "100vh",
+    postHeight: "30rem",
   },
   sizes: {
     defaultFont: "1.6rem",

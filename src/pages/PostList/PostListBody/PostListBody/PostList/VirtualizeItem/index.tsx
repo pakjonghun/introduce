@@ -1,11 +1,12 @@
 import React, { FC, useEffect, useState } from "react";
-import { VirtualizeItemProps } from "./interface";
+import styled from "styled-components";
 
-const VirtualizedItem: FC<VirtualizeItemProps> = ({
-  children,
-  height,
-  offset = 0,
-}) => {
+export interface VirtualizeItemProps {
+  children: React.ReactNode;
+  offset?: number;
+}
+
+const VirtualizedItem: FC<VirtualizeItemProps> = ({ children, offset = 0 }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [itemRef, setItemRef] = useState<HTMLElement | null>(null);
   useEffect(() => {
@@ -37,12 +38,12 @@ const VirtualizedItem: FC<VirtualizeItemProps> = ({
 
   return (
     <div ref={setItemRef}>
-      {isVisible ? (
-        <>{children}</>
-      ) : (
-        <div style={{ height, backgroundColor: "red" }} />
-      )}
+      {isVisible ? <>{children}</> : <VirtualizeItem />}
     </div>
   );
 };
 export default VirtualizedItem;
+
+const VirtualizeItem = styled.div`
+  height: ${({ theme }) => theme.values.postHeight};
+`;

@@ -37,7 +37,7 @@ const Container = styled.div<IsFilterOpen>`
   box-shadow: ${({ theme }) => theme.shadows.medium};
   overflow-y: auto;
   z-index: 20;
-  transition: 0.3s 0.2s;
+  transition: 0.4s;
 
   & > *:not(:last-child) {
     margin-bottom: 2rem;
@@ -65,11 +65,16 @@ const Container = styled.div<IsFilterOpen>`
     top: 50%;
     width: 70rem;
     height: auto;
-    padding: 0 0 2rem 0;
+    padding: 0 1rem 2rem 1rem;
     border-radius: 10px;
     box-shadow: ${({ theme }) => theme.shadows.medium};
     transform: translate(50%, -50%);
     visibility: ${({ isFilterOpen }) => (isFilterOpen ? "visible" : "hidden")};
     opacity: ${({ isFilterOpen }) => (isFilterOpen ? 1 : 0)};
+    transition: 0.4s 0.2s;
+  }
+
+  ${media.xs} {
+    width: 50rem;
   }
 `;

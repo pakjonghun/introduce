@@ -1,13 +1,18 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { isFilterOpenState } from "../../../recoil/postlist/atom";
 import { media } from "../../../styles/media";
 import { IsOverlayOpen } from "./interface";
 
 const Overlay = () => {
-  const isFilterOpen = useRecoilValue(isFilterOpenState);
-  return <OverLay isOverlayOpen={isFilterOpen} />;
+  const [isFilterOpen, setIsFilterOpen] = useRecoilState(isFilterOpenState);
+  return (
+    <OverLay
+      onClick={() => setIsFilterOpen(false)}
+      isOverlayOpen={isFilterOpen}
+    />
+  );
 };
 
 export default Overlay;

@@ -4,22 +4,27 @@ import { Post } from "../../../../interfaces/post";
 import { media } from "../../../../styles/media";
 import VirtualizedItem from "../PostListBody/PostList/VirtualizeItem";
 import PostCategory from "./PostCategory";
+import PostInfo from "./PostInfo";
+import MarkdownIt from "markdown-it";
 
 interface PostProps {
   post: Post;
 }
 
 const PostItem: React.FC<PostProps> = ({ post }) => {
+  const md = new MarkdownIt();
+  // eslint-disable-next-line testing-library/render-result-naming-convention
+  const body = md.render(post.body.slice(0, 300));
+
   return (
-    <VirtualizedItem height={160} key={post.id}>
-      <Container>
-        <PostInfo>
-          <Title>
-            {post.id.replace(".md", "").split("-").pop()?.toUpperCase()}
-          </Title>
-          <Date>{post.head.date?.slice(0, 10)}</Date>
-        </PostInfo>
-        <Content>{post.body.slice(0, 400)}</Content>
+    <VirtualizedItem key={post.id}>
+      <Container href={`/${post.id}`}>
+        <PostInfo title={post.id} date={post.head.date} />
+        <Content
+          className='postDetail'
+          dangerouslySetInnerHTML={{ __html: `${body}...` }}
+        />
+        ;
         <PostCategory categoryList={post.head.category?.split(",") || []} />
       </Container>
     </VirtualizedItem>
@@ -27,7 +32,7 @@ const PostItem: React.FC<PostProps> = ({ post }) => {
 };
 export default PostItem;
 
-const Container = styled.div`
+const Container = styled.a`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -60,18 +65,12 @@ const Container = styled.div`
   }
 `;
 
-const PostInfo = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1rem;
-`;
-
 const Content = styled.div`
   position: relative;
   height: 16rem;
   margin: 1.5rem 0 1rem 0;
   padding: 1rem 1.2rem;
+  padding-top: 0;
   font-size: 1.5rem;
   background-color: ${({ theme }) => theme.colors.grayLight3};
   color: ${({ theme }) => theme.colors.grayDark2};
@@ -91,14 +90,4 @@ const Content = styled.div`
     line-height: 1;
     z-index: -1;
   }
-`;
-
-const Title = styled.h3`
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: ${({ theme }) => theme.colors.grayDark2};
-`;
-
-const Date = styled.p`
-  color: ${({ theme }) => theme.colors.grayDark3};
 `;

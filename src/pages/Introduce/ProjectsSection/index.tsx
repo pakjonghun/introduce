@@ -3,8 +3,9 @@ import styled, { css } from "styled-components";
 import SectionLayout from "../../../components/SectionLayout";
 import { rightFadeIn } from "../../../styles/animation";
 import { media } from "../../../styles/media";
-import { PAGE_TWO_TITLE } from "../../../texture/constants";
+import { PAGE_TWO_TITLE } from "../../../constant/constants";
 import useGetIsCurPage from "../hooks/useGetIsCurPage";
+import { IsAniShow } from "./interface";
 import ProjectCard from "./ProjectCard";
 import ProjectDesc from "./ProjectDesc";
 
@@ -68,10 +69,6 @@ const ProjectsSection = () => {
 };
 
 export default ProjectsSection;
-
-interface IsAniShow {
-  isAniShow: boolean;
-}
 
 const SectionBody = styled.div`
   display: grid;

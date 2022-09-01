@@ -1,50 +1,20 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useRecoilState, useRecoilValue, useRecoilValueLoadable } from "recoil";
+import React, { useCallback, useState } from "react";
 import styled from "styled-components";
-import {
-  isSwitchingPageState,
-  scrollDirectionState,
-  scrollTopState,
-} from "../../../recoil/Introduce/atom";
 import { leftFadeIn } from "../../../styles/animation";
 import { media } from "../../../styles/media";
-import { PAGE_ONE_TITLE, PAGE_TWO_TITLE } from "../../../texture/constants";
-import { getCurrentPage } from "../../../utils/scrollFunctions";
+import { PAGE_ONE_TITLE, PAGE_TWO_TITLE } from "../../../constant/constants";
+import useGetOnMenuClickFunc from "./useGetOnMenuClickFunc";
+import useSetIndicatorTop from "./useSetIndicatorTop";
 
 const ScrollIndicator = () => {
-  const wrapperRef = useRef<HTMLUListElement | null>(null);
-  const scrollTop = useRecoilValue(scrollTopState);
-  const clientHeight = document.documentElement.clientHeight;
   const [scrollBarPosition, setScrollBarPosition] = useState(0);
+  const setPosition = useCallback((value: number) => {
+    setScrollBarPosition(value);
+  }, []);
 
-  const scrollDirection = useRecoilValue(scrollDirectionState);
-
-  const [isSwitchingPage, setIsSwitchingPage] =
-    useRecoilState(isSwitchingPageState);
-
-  const onClickMenu = useCallback(
-    (scrollTop: number) => {
-      if (isSwitchingPage) return;
-      setIsSwitchingPage(true);
-      window.scrollTo(0, scrollTop);
-    },
-    [setIsSwitchingPage, isSwitchingPage]
-  );
-
-  useEffect(() => {
-    if (wrapperRef.current) {
-      const curPage = getCurrentPage({
-        scrollTop,
-        clientHeight,
-        scrollDirection,
-      });
-      if (curPage) {
-        setScrollBarPosition(
-          wrapperRef.current.clientHeight * (curPage - 1) * 0.25
-        );
-      }
-    }
-  }, [scrollTop]);
+  const wrapperRef = useSetIndicatorTop({ setFunc: setPosition });
+  const clientHeight = document.documentElement.clientHeight;
+  const onClickMenu = useGetOnMenuClickFunc();
 
   return (
     <Container>

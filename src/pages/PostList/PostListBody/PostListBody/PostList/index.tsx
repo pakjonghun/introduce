@@ -1,18 +1,18 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import styled, { css } from "styled-components";
 import { PostListResponse } from "../../../../../interfaces/postList";
 import {
-  isFilterOpenState,
   isSearchLoadingState,
   pageState,
   postListCountState,
 } from "../../../../../recoil/postlist/atom";
 import Post from "../../Post";
-import { IsFilterOpen, IsLastItem } from "./interface";
-import useGetInfinityScroll from "./hook/useGetInfinityScroll";
+import { IsLastItem } from "./interface";
+import useGetInfinityScroll from "./useGetInfinityScroll";
 import Overlay from "../../../Overlay";
 import { media } from "../../../../../styles/media";
+import LoadingSpinner from "../../../../../components/LoadingSpinner";
 
 interface PostListProps {
   postListResponse: PostListResponse;
@@ -20,7 +20,6 @@ interface PostListProps {
 }
 
 const PostList: React.FC<PostListProps> = ({ postListResponse, idx }) => {
-  const isFilterOpen = useRecoilValue(isFilterOpenState);
   const setPostListCount = useSetRecoilState(postListCountState);
   const [isSearchLoading, setIsSearchLoading] =
     useRecoilState(isSearchLoadingState);
@@ -49,13 +48,13 @@ const PostList: React.FC<PostListProps> = ({ postListResponse, idx }) => {
   return (
     <>
       <Overlay />
-      <Container isFilterOpen={isFilterOpen}>
+      <Wrapper>
         {postListResponse.data?.map((post) => (
           <Post post={post} />
         ))}
-      </Container>
+      </Wrapper>
       <LoadingPost isLastItem={isCurLast} ref={isCurLast ? ref : null}>
-        loading
+        <LoadingSpinner />
       </LoadingPost>
     </>
   );
@@ -63,19 +62,12 @@ const PostList: React.FC<PostListProps> = ({ postListResponse, idx }) => {
 
 export default PostList;
 
-const Container = styled.div<IsFilterOpen>`
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin-top: 8rem;
+const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
   grid-gap: 2rem;
   justify-content: center;
-  width: ${({ isFilterOpen }) => (isFilterOpen ? "68%" : "100%")};
   padding: 1rem;
-  transition: 0.2s;
-  transition: 0.3s;
 
   ${media.lg} {
     grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
@@ -95,12 +87,12 @@ const Container = styled.div<IsFilterOpen>`
 `;
 
 const LoadingPost = styled.div<IsLastItem>`
-  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 3rem;
-
   ${({ isLastItem }) =>
     css`
-      background-color: ${isLastItem ? "green" : "blue"};
       transform: scale(${isLastItem ? 1 : 0});
     `}
 `;

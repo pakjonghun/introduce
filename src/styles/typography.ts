@@ -1,5 +1,11 @@
+import { media } from "./media";
 import { css } from "styled-components";
 import { getSvgPath } from "../utils/styleFunctions";
+import {
+  ColorChangeHover,
+  GetSvgIconProps,
+  TextInputWithIcon,
+} from "./interfaces";
 
 export const baseMenuHover = css`
   &:hover {
@@ -34,13 +40,6 @@ export const baseGradient = (leftColor: string, rightColor: string) => {
   `;
 };
 
-interface GetSvgIconProps {
-  width: number;
-  height: number;
-  iconName: string;
-  color: string;
-}
-
 export const getSvgIcon = ({
   width,
   height,
@@ -61,11 +60,6 @@ export const getSvgIcon = ({
   `;
 };
 
-interface TextInputWithIcon {
-  color: string;
-  focusColor: string;
-}
-
 export const baseTextInput = ({ color, focusColor }: TextInputWithIcon) => css`
   border: 1px solid ${color};
   outline: 1px solid transparent;
@@ -85,18 +79,10 @@ export const baseTextInput = ({ color, focusColor }: TextInputWithIcon) => css`
   }
 `;
 
-interface ColorChangeHover {
-  initColor: string;
-  changeColor: string;
-  initBgColor: string;
-  changeBgColor: string;
-}
-
 export const buttonHover = ({
   initColor,
-  changeColor,
+
   initBgColor,
-  changeBgColor,
 }: ColorChangeHover) => {
   return css`
     color: ${initColor};
@@ -112,3 +98,46 @@ export const buttonHover = ({
     }
   `;
 };
+
+export const baseEnterButton = css`
+  position: relative;
+  padding: 0 0 0 0;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grayDark3};
+  color: ${({ theme }) => theme.colors.grayDark3};
+  background-color: transparent;
+  transition: 0.2s;
+  cursor: pointer;
+  z-index: 1;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 130%;
+    height: 150%;
+    border-radius: 0.3rem;
+    transition: 0.2s;
+    z-index: -1;
+  }
+
+  &:hover::before {
+    background-color: black;
+  }
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.grayLight1};
+    ${baseBoxHover}
+  }
+
+  ${media.sm} {
+    font-size: 2.4rem;
+  }
+`;

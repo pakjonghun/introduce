@@ -1,4 +1,4 @@
-const distanceRate = 1 / 10;
+const distanceRate = 1 / 2;
 
 export function getCurPageWhenNotScrolling(
   scrollTop: number,
@@ -38,12 +38,12 @@ export function getCurrentPage({
       case distance < scrollTop && scrollTop <= distance + clientHeight:
         return 2;
       case distance + clientHeight < scrollTop &&
-        scrollTop <= distance + 2 * clientHeight:
+        scrollTop <= 2 * clientHeight + 10:
         return 3;
-      case distance + 2 * clientHeight < scrollTop &&
-        scrollTop <= distance + 3 * clientHeight:
+      case 2 * clientHeight + 10 < scrollTop &&
+        scrollTop <= 3 * clientHeight - distance:
         return 4;
-      case distance + 3 * clientHeight < scrollTop:
+      case 3 * clientHeight - distance < scrollTop:
         return 4;
       default:
         throw new Error("introduce curpagestate error");
