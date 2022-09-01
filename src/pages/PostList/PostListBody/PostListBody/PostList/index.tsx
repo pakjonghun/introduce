@@ -50,7 +50,7 @@ const PostList: React.FC<PostListProps> = ({ postListResponse, idx }) => {
       <Overlay />
       <Wrapper>
         {postListResponse.data?.map((post) => (
-          <Post post={post} />
+          <Post key={post.id} post={post} />
         ))}
       </Wrapper>
       <LoadingPost isLastItem={isCurLast} ref={isCurLast ? ref : null}>

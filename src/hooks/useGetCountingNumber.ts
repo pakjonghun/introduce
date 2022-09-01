@@ -39,7 +39,6 @@ const useGetCountingNumber = ({
       if (timer) clearTimeout(timer);
     };
   }, [startNumber, endNumber, totalFrameCount, duration, isAniStart]);
-
   return number;
 };
 

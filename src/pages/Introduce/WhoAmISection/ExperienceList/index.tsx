@@ -2,8 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { media } from "../../../../styles/media";
 import ExperienceItem from "./ExperienceItem";
+import useGetTotalCount from "./useGetTotalTilCount";
 
 const Experience = () => {
+  const totalTilCount = useGetTotalCount();
+
   return (
     <Container>
       <Text>꾸준히 성장하는 사람</Text>
@@ -13,7 +16,12 @@ const Experience = () => {
         duration={3000}
         endNumber={10}
       />
-      <TILExp unit='회' desc='TIL회고' duration={3000} endNumber={400} />
+      <TILExp
+        unit='회'
+        desc='TIL회고'
+        duration={3000}
+        endNumber={totalTilCount}
+      />
       <InteonExp unit='일' desc='인턴경력' duration={3000} endNumber={30} />
     </Container>
   );

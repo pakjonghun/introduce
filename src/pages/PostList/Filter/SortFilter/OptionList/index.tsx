@@ -13,7 +13,7 @@ const SortItem = () => {
     <Container isSortOpen={isSortOpen}>
       <OptionItem sortItem='없음' />
       {sortKeys.map((key) => (
-        <OptionItem sortItem={key} />
+        <OptionItem key={key} sortItem={key} />
       ))}
     </Container>
   );

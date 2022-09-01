@@ -12,3 +12,7 @@ export const getPost = async (postId: string) => {
 export const getCategory = async () => {
   return getFetch({ endPoint: "category" });
 };
+
+export const getTotalCount = async () => {
+  return getFetch({ endPoint: "totalCount" });
+};

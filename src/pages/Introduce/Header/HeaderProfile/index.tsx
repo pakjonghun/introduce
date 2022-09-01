@@ -4,15 +4,16 @@ import GridBox from "./GridBox";
 import useGetCountingNumber from "../../../../hooks/useGetCountingNumber";
 import ProfileImg from "./ProfileImg";
 import { fadeIn, fadeInAndRotate } from "../../../../styles/animation";
-import useGetIsCurPage from "../../hooks/useGetIsCurPage";
 import { media } from "../../../../styles/media";
+import useGetTotalDevDate from "./useGetTotalDevDate";
 
 const HeaderProfile = () => {
-  const isAniStart = useGetIsCurPage(1);
+  const totalDate = useGetTotalDevDate();
   const time = useGetCountingNumber({
-    endNumber: 2000,
+    startNumber: 0,
+    endNumber: totalDate,
     duration: 2000,
-    isAniStart,
+    isAniStart: true,
   });
 
   return (
