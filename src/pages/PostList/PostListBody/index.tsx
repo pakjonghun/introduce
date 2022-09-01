@@ -3,6 +3,7 @@ import { useRecoilValue, useRecoilValueLoadable } from "recoil";
 import styled from "styled-components";
 import { isFilterOpenState } from "../../../recoil/postlist/atom";
 import { getPostListsQuery } from "../../../recoil/postlist/selector";
+import { media } from "../../../styles/media";
 import { IsFilterOpen } from "../Filter/interfaces";
 import PostList from "./PostListBody";
 
@@ -41,4 +42,8 @@ const Container = styled.div<IsFilterOpen>`
   width: ${({ isFilterOpen }) => (isFilterOpen ? "68%" : "100%")};
   margin-top: 8rem;
   transition: 0.3s;
+
+  ${media.sm} {
+    width: 100%;
+  }
 `;
