@@ -8,4 +8,3 @@
   - 최대한 작게 나눈 컴포넌트
   - 재활용 되는 스타일 정리(animation,typography,theme)
   - tip
-  - tip
